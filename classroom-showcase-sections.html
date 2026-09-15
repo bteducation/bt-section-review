@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BT Education — Founder teaching and classroom gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --brand: #005561;
+        --brand-dark: #004143;
+        --accent: #33e3ce;
+        --accent-hover: #00b7b4;
+        --pale: #e6f3f3;
+        --ink: #111;
+        --muted: #656565;
+        --border: #dce6e5;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: #fff;
+        font-family: Inter, Arial, sans-serif;
+      }
+
+      button, a { font: inherit; }
+      button { cursor: pointer; }
+      img { display: block; max-width: 100%; }
+
+      :focus-visible {
+        outline: 3px solid #0b6efd;
+        outline-offset: 4px;
+      }
+
+      .container {
+        width: min(1440px, 100%);
+        margin-inline: auto;
+        padding-inline: 112px;
+      }
+
+      .eyebrow {
+        margin: 0;
+        color: var(--brand);
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.5;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+
+      h2, h3 {
+        margin: 0;
+        font-family: Poppins, Arial, sans-serif;
+        font-weight: 600;
+        letter-spacing: -.02em;
+        text-wrap: balance;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 48px;
+        padding: 12px 22px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        color: #111;
+        background: var(--accent);
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 1.5;
+        text-decoration: none;
+        transition: background-color 160ms ease;
+      }
+
+      .button:hover { background: var(--accent-hover); }
+      .button svg { width: 18px; height: 18px; }
+
+      /* Single-image founder teaching story */
+      .founder-teaching {
+        padding-block: 112px;
+        background: var(--pale);
+      }
+
+      .story-heading {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 56px;
+        align-items: start;
+        margin: 0;
+        padding: 44px;
+        border-top: 3px solid var(--brand);
+        border-radius: 0 0 12px 12px;
+        background: #fff;
+      }
+
+      .story-heading h2 {
+        max-width: 560px;
+        margin-top: 16px;
+        font-size: 36px;
+        line-height: 1.2;
+      }
+
+      .story-copy {
+        max-width: 480px;
+        padding-top: 2px;
+      }
+
+      .story-copy p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.75;
+      }
+
+      .story-copy .button { margin-top: 26px; }
+
+      .story-media {
+        position: relative;
+        min-height: 0;
+        margin: 0;
+        overflow: hidden;
+        border-radius: 14px 14px 0 0;
+        background: #dedede;
+      }
+
+      .story-media img {
+        width: 100%;
+        aspect-ratio: 16 / 7;
+        object-fit: cover;
+      }
+
+      .story-caption {
+        position: absolute;
+        right: 24px;
+        bottom: 24px;
+        max-width: 360px;
+        padding: 18px 20px;
+        border-radius: 10px;
+        color: #fff;
+        background: rgb(0 65 67 / 92%);
+        box-shadow: 0 12px 30px rgb(0 35 38 / 20%);
+      }
+
+      .story-caption strong,
+      .story-caption span { display: block; }
+
+      .story-caption strong {
+        font-family: Poppins, Arial, sans-serif;
+        font-size: 17px;
+        line-height: 1.4;
+      }
+
+      .story-caption span {
+        margin-top: 5px;
+        color: rgb(255 255 255 / 75%);
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      /* Interactive classroom gallery */
+      .classroom-gallery {
+        padding-block: 112px;
+        color: #fff;
+        background: var(--brand-dark);
+      }
+
+      .gallery-heading {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, .85fr);
+        gap: 64px;
+        align-items: end;
+        margin-bottom: 40px;
+      }
+
+      .gallery-heading .eyebrow { color: var(--accent); }
+
+      .gallery-heading h2 {
+        max-width: 650px;
+        margin-top: 16px;
+        font-size: 46px;
+        line-height: 1.1;
+      }
+
+      .gallery-intro {
+        max-width: 520px;
+        justify-self: end;
+        margin: 0;
+        color: rgb(255 255 255 / 75%);
+        font-size: 16px;
+        line-height: 1.75;
+      }
+
+      .gallery-stage {
+        display: grid;
+        grid-template-columns: minmax(0, 1.5fr) minmax(320px, .5fr);
+        min-height: 520px;
+        overflow: hidden;
+        border: 1px solid rgb(255 255 255 / 14%);
+        border-radius: 14px;
+        background: var(--brand);
+      }
+
+      .gallery-picture {
+        position: relative;
+        min-width: 0;
+        min-height: 0;
+        margin: 0;
+        overflow: hidden;
+        background: var(--pale);
+      }
+
+      .gallery-picture img {
+        width: 100%;
+        height: 100%;
+        min-height: 520px;
+        object-fit: cover;
+        transition: opacity 180ms ease;
+      }
+
+      .gallery-picture.is-changing img { opacity: .25; }
+
+      .gallery-detail {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 40px;
+        min-width: 0;
+        padding: 44px 36px 36px;
+      }
+
+      .gallery-count {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 0 22px;
+        color: var(--accent);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: .08em;
+        text-transform: uppercase;
+      }
+
+      .gallery-count::before {
+        width: 28px;
+        height: 2px;
+        background: currentColor;
+        content: "";
+      }
+
+      .gallery-detail h3 {
+        font-size: 28px;
+        line-height: 1.25;
+      }
+
+      .gallery-detail p {
+        margin: 16px 0 0;
+        color: rgb(255 255 255 / 75%);
+        font-size: 15px;
+        line-height: 1.75;
+      }
+
+      .gallery-controls {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .gallery-arrow {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        padding: 0;
+        border: 1px solid rgb(255 255 255 / 35%);
+        border-radius: 50%;
+        color: #fff;
+        background: transparent;
+      }
+
+      .gallery-arrow:hover { color: #111; background: var(--accent); border-color: var(--accent); }
+      .gallery-arrow svg { width: 20px; height: 20px; }
+
+      .gallery-thumbnails {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 16px;
+      }
+
+      .gallery-thumbnail {
+        display: grid;
+        grid-template-columns: 96px minmax(0, 1fr);
+        align-items: center;
+        gap: 16px;
+        min-width: 0;
+        padding: 10px;
+        border: 1px solid rgb(255 255 255 / 16%);
+        border-radius: 10px;
+        color: rgb(255 255 255 / 72%);
+        background: transparent;
+        text-align: left;
+      }
+
+      .gallery-thumbnail:hover { border-color: rgb(51 227 206 / 60%); }
+
+      .gallery-thumbnail[aria-current="true"] {
+        border-color: var(--accent);
+        color: #fff;
+        background: rgb(0 85 97 / 70%);
+      }
+
+      .gallery-thumbnail img {
+        width: 96px;
+        height: 64px;
+        border-radius: 6px;
+        object-fit: cover;
+      }
+
+      .gallery-thumbnail span {
+        overflow: hidden;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.45;
+        text-overflow: ellipsis;
+      }
+
+      @media (max-width: 1279px) {
+        .container { padding-inline: 56px; }
+        .story-heading { gap: 32px; padding: 32px; }
+      }
+
+      @media (max-width: 1023px) {
+        .container { padding-inline: 24px; }
+        .founder-teaching, .classroom-gallery { padding-block: 80px; }
+        .story-heading, .gallery-heading { grid-template-columns: 1fr; gap: 24px; align-items: start; }
+        .story-heading h2, .gallery-heading h2 { font-size: 36px; line-height: 1.2; }
+        .story-copy, .gallery-intro { justify-self: start; }
+        .story-media img { aspect-ratio: 16 / 9; }
+        .gallery-stage { grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr); min-height: 460px; }
+        .gallery-picture img { min-height: 460px; }
+        .gallery-detail { padding: 32px 28px 28px; }
+        .gallery-thumbnails { overflow-x: auto; grid-template-columns: repeat(3, minmax(260px, 1fr)); padding-bottom: 6px; scroll-snap-type: x proximity; }
+        .gallery-thumbnail { scroll-snap-align: start; }
+      }
+
+      @media (max-width: 639px) {
+        .container { padding-inline: 16px; }
+        .founder-teaching, .classroom-gallery { padding-block: 64px; }
+        .gallery-heading { margin-bottom: 28px; }
+        .story-heading { margin: 0; padding: 28px 24px; gap: 20px; }
+        .story-heading h2, .gallery-heading h2 { font-size: 30px; }
+        .story-copy .button, .button { width: 100%; }
+        .story-media { border-radius: 10px 10px 0 0; }
+        .story-media img { aspect-ratio: 4 / 3; }
+        .story-caption { position: static; max-width: none; border-radius: 0; box-shadow: none; }
+        .gallery-stage { grid-template-columns: 1fr; min-height: 0; border-radius: 10px; }
+        .gallery-picture img { min-height: 0; aspect-ratio: 4 / 3; }
+        .gallery-detail { min-height: 330px; padding: 28px 24px 24px; }
+        .gallery-detail h3 { font-size: 24px; }
+        .gallery-thumbnails { grid-template-columns: repeat(3, minmax(230px, 80vw)); gap: 10px; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { transition: none !important; scroll-behavior: auto !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="founder-teaching" aria-labelledby="founder-teaching-heading">
+        <div class="container">
+          <figure class="story-media">
+            <img src="https://placehold.co/1600x700/dedede/858585" width="1600" height="700" alt="Placeholder for the BT Education founder teaching a class" />
+          </figure>
+          <header class="story-heading">
+            <div>
+              <p class="eyebrow">Founder-led learning</p>
+              <h2 id="founder-teaching-heading">See how a difficult idea becomes clear.</h2>
+            </div>
+            <div class="story-copy">
+              <p>Step inside a lesson with our founder. Explore how clear explanations, worked examples and guided practice help students understand the thinking behind each step.</p>
+              <a class="button" href="https://bt-education-website.vercel.app/about-us">
+                Meet our founder
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              </a>
+            </div>
+          </header>
+
+        </div>
+      </section>
+
+      <section class="classroom-gallery" aria-labelledby="classroom-gallery-heading">
+        <div class="container">
+          <header class="gallery-heading">
+            <div>
+              <p class="eyebrow">Inside a BT classroom</p>
+              <h2 id="classroom-gallery-heading">Teaching you can see. Support students can feel.</h2>
+            </div>
+            <p class="gallery-intro">Explore the moments that shape each lesson—from a clear explanation at the board to focused practice and individual feedback.</p>
+          </header>
+
+          <div class="gallery-stage" aria-live="polite">
+            <figure class="gallery-picture">
+              <img id="gallery-image" src="https://placehold.co/1200x800/e6f3f3/005561?text=1200+%C3%97+800" width="1200" height="800" alt="Placeholder for a tutor explaining a concept at the board" />
+            </figure>
+            <div class="gallery-detail">
+              <div>
+                <p class="gallery-count" id="gallery-count">01 / 03</p>
+                <h3 id="gallery-title">A clear explanation</h3>
+                <p id="gallery-description">The tutor breaks a challenging concept into logical steps, checks understanding and connects the method to the questions students will practise.</p>
+              </div>
+              <div class="gallery-controls" aria-label="Gallery controls">
+                <button class="gallery-arrow" id="gallery-previous" type="button" aria-label="Previous classroom image">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </button>
+                <button class="gallery-arrow" id="gallery-next" type="button" aria-label="Next classroom image">
+                  <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" /></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <nav class="gallery-thumbnails" aria-label="Choose a classroom moment">
+            <button class="gallery-thumbnail" type="button" aria-current="true" data-slide="0">
+              <img src="https://placehold.co/300x200/e6f3f3/005561?text=300+%C3%97+200" width="300" height="200" alt="" />
+              <span>Clear explanations</span>
+            </button>
+            <button class="gallery-thumbnail" type="button" aria-current="false" data-slide="1">
+              <img src="https://placehold.co/300x200/b4dbdc/004143?text=300+%C3%97+200" width="300" height="200" alt="" />
+              <span>Purposeful practice</span>
+            </button>
+            <button class="gallery-thumbnail" type="button" aria-current="false" data-slide="2">
+              <img src="https://placehold.co/300x200/c8e5e2/005561?text=300+%C3%97+200" width="300" height="200" alt="" />
+              <span>Useful feedback</span>
+            </button>
+          </nav>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const gallerySlides = [
+        {
+          image: 'https://placehold.co/1200x800/e6f3f3/005561?text=1200+%C3%97+800',
+          alt: 'Placeholder for a tutor explaining a concept at the board',
+          title: 'A clear explanation',
+          description: 'The tutor breaks a challenging concept into logical steps, checks understanding and connects the method to the questions students will practise.'
+        },
+        {
+          image: 'https://placehold.co/1200x800/b4dbdc/004143?text=1200+%C3%97+800',
+          alt: 'Placeholder for students working through practice questions in class',
+          title: 'Purposeful practice',
+          description: 'Students apply the idea while it is fresh, with carefully sequenced questions that move from guided examples towards independent problem-solving.'
+        },
+        {
+          image: 'https://placehold.co/1200x800/c8e5e2/005561?text=1200+%C3%97+800',
+          alt: 'Placeholder for a tutor giving individual feedback to a student',
+          title: 'Feedback students can use',
+          description: 'Individual guidance helps students identify what is working, correct misunderstandings early and leave the lesson knowing their next step.'
+        }
+      ];
+
+      const galleryPicture = document.querySelector('.gallery-picture');
+      const galleryImage = document.getElementById('gallery-image');
+      const galleryCount = document.getElementById('gallery-count');
+      const galleryTitle = document.getElementById('gallery-title');
+      const galleryDescription = document.getElementById('gallery-description');
+      const galleryThumbnails = [...document.querySelectorAll('.gallery-thumbnail')];
+      let currentSlide = 0;
+
+      function showSlide(index) {
+        currentSlide = (index + gallerySlides.length) % gallerySlides.length;
+        const slide = gallerySlides[currentSlide];
+        galleryPicture.classList.add('is-changing');
+        window.setTimeout(() => {
+          galleryImage.src = slide.image;
+          galleryImage.alt = slide.alt;
+          galleryCount.textContent = `${String(currentSlide + 1).padStart(2, '0')} / ${String(gallerySlides.length).padStart(2, '0')}`;
+          galleryTitle.textContent = slide.title;
+          galleryDescription.textContent = slide.description;
+          galleryThumbnails.forEach((thumbnail, thumbnailIndex) => {
+            thumbnail.setAttribute('aria-current', String(thumbnailIndex === currentSlide));
+          });
+          galleryPicture.classList.remove('is-changing');
+        }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 120);
+      }
+
+      document.getElementById('gallery-previous').addEventListener('click', () => showSlide(currentSlide - 1));
+      document.getElementById('gallery-next').addEventListener('click', () => showSlide(currentSlide + 1));
+      galleryThumbnails.forEach(thumbnail => thumbnail.addEventListener('click', () => showSlide(Number(thumbnail.dataset.slide))));
+    </script>
+  </body>
+</html>

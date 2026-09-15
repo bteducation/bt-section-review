@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BT Education — Learning with BT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bt-brand: #005561;
+        --bt-accent: #33e3ce;
+        --bt-accent-hover: #00b7b4;
+        --bt-page-gutter: 24px;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: #fff;
+        color: #111;
+        font-family: Inter, Arial, sans-serif;
+      }
+
+      .teaching-section {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        background: var(--bt-brand);
+        color: #fff;
+      }
+
+      .teaching-content {
+        align-self: center;
+        min-width: 0;
+        padding: 64px var(--bt-page-gutter);
+      }
+
+      .eyebrow {
+        margin: 0;
+        color: var(--bt-accent);
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.5;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        max-width: 560px;
+        margin: 16px 0 0;
+        font-family: Poppins, Arial, sans-serif;
+        font-size: 30px;
+        font-weight: 600;
+        line-height: 1.25;
+        letter-spacing: -0.02em;
+        text-wrap: balance;
+      }
+
+      .description {
+        max-width: 500px;
+        margin: 20px 0 0;
+        color: rgb(255 255 255 / 80%);
+        font-size: 16px;
+        line-height: 1.75;
+      }
+
+      .assessment-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        width: 100%;
+        min-height: 48px;
+        margin-top: 28px;
+        padding: 12px 20px;
+        border-radius: 8px;
+        background: var(--bt-accent);
+        color: #111;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 1.5;
+        text-decoration: none;
+        text-align: center;
+        transition: background-color 160ms ease;
+      }
+
+      .assessment-cta:hover { background: var(--bt-accent-hover); }
+
+      .assessment-cta:focus-visible {
+        outline: 3px solid #fff;
+        outline-offset: 4px;
+      }
+
+      .assessment-cta svg {
+        flex: 0 0 18px;
+        width: 18px;
+        height: 18px;
+      }
+
+      .teaching-gallery {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: repeat(2, minmax(0, 1fr));
+        min-width: 0;
+        min-height: 0;
+        aspect-ratio: 3 / 2;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        background: #b4dbdc;
+      }
+
+      .teaching-gallery li {
+        position: relative;
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden;
+      }
+
+      .teaching-gallery img {
+        position: absolute;
+        inset: 0;
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      @media (min-width: 640px) {
+        .teaching-content { padding-block: 80px; }
+        h2 { font-size: 36px; }
+        .assessment-cta { width: auto; padding-inline: 24px; }
+      }
+
+      @media (min-width: 1024px) {
+        :root { --bt-page-gutter: 56px; }
+
+        .teaching-section {
+          grid-template-columns: minmax(0, 1.04fr) minmax(0, 0.96fr);
+        }
+
+        .teaching-content {
+          padding-top: 96px;
+          padding-bottom: 96px;
+          padding-left: max(var(--bt-page-gutter), calc((100vw - 1440px) / 2 + var(--bt-page-gutter)));
+          padding-right: 56px;
+        }
+
+        h2 { font-size: 46px; line-height: 1.1; }
+
+        .teaching-gallery {
+          aspect-ratio: auto;
+          min-height: 480px;
+        }
+      }
+
+      @media (min-width: 1280px) {
+        :root { --bt-page-gutter: 112px; }
+        .teaching-content { padding-block: 112px; padding-right: 64px; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .assessment-cta { transition: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="teaching-section" aria-labelledby="teaching-heading">
+        <div class="teaching-content">
+          <p class="eyebrow">Learning with BT</p>
+          <h2 id="teaching-heading">Great teaching.<br />Real connection.<br />Your next breakthrough.</h2>
+          <p class="description">Clear explanations, guided practice and people who care about your progress. Find the right support for your next step with a free academic assessment.</p>
+          <a class="assessment-cta" href="https://bt-education-website.vercel.app/enrolment">
+            Book a free assessment
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+
+        <!-- Replace these sources and alt text with approved teaching photographs. -->
+        <ul class="teaching-gallery" aria-label="Teaching at BT Education">
+          <li><img src="https://placehold.co/800x600/e6f3f3/005561" width="800" height="600" alt="Placeholder for a tutor teaching at the whiteboard" /></li>
+          <li><img src="https://placehold.co/800x600/b4dbdc/004143" width="800" height="600" alt="Placeholder for a tutor helping a student" /></li>
+          <li><img src="https://placehold.co/800x600/c8e5e2/005561" width="800" height="600" alt="Placeholder for students working together in class" /></li>
+          <li><img src="https://placehold.co/800x600/dcecea/004143" width="800" height="600" alt="Placeholder for a small-group lesson with a BT tutor" /></li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

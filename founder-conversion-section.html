@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BT Education — Founder section</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bt-primitive-teal-950: #004143;
+        --bt-primitive-teal-900: #005561;
+        --bt-primitive-teal-100: #e6f3f3;
+        --bt-bg-media-placeholder: #e2e2e2;
+        --bt-text-primary: #111111;
+        --bt-text-secondary: #656565;
+        --bt-text-brand: var(--bt-primitive-teal-900);
+        --bt-action-primary: var(--bt-primitive-teal-900);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        min-height: 100vh;
+        margin: 0;
+        background: #ffffff;
+        color: var(--bt-text-primary);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      a {
+        color: inherit;
+        font: inherit;
+      }
+
+      a:focus-visible {
+        outline: 3px solid #0b6efd;
+        outline-offset: 3px;
+      }
+
+      .founder-section {
+        padding: 112px 0;
+        background: #ffffff;
+      }
+
+      .founder-inner {
+        display: grid;
+        grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+        align-items: center;
+        gap: 64px;
+        width: min(1440px, 100%);
+        margin: 0 auto;
+        padding: 0 112px;
+      }
+
+      .portrait {
+        margin: 0;
+        overflow: hidden;
+        border-radius: 12px;
+        background: var(--bt-primitive-teal-100);
+      }
+
+      .portrait img {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+        background: var(--bt-bg-media-placeholder);
+        object-fit: cover;
+      }
+
+      .founder-identity {
+        margin: 24px 0 0;
+        color: var(--bt-text-brand);
+      }
+
+      .founder-identity strong,
+      .founder-identity span {
+        display: block;
+      }
+
+      .founder-identity strong {
+        font-family: Poppins, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+      }
+
+      .founder-identity span {
+        margin-top: 4px;
+        color: var(--bt-text-secondary);
+        font-size: 13px;
+      }
+
+      .founder-content {
+        min-width: 0;
+        max-width: 620px;
+      }
+
+      .eyebrow {
+        margin: 0;
+        color: var(--bt-text-brand);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin: 16px 0 0;
+        color: var(--bt-text-primary);
+        font-family: Poppins, Inter, ui-sans-serif, system-ui, sans-serif;
+        font-size: 46px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+        text-wrap: balance;
+      }
+
+      .description {
+        max-width: 560px;
+        margin: 20px 0 0;
+        color: var(--bt-text-secondary);
+        font-size: 16px;
+        line-height: 1.75;
+      }
+
+      .primary-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 48px;
+        margin-top: 28px;
+        padding: 12px 24px;
+        border-radius: 8px;
+        background: #33e3ce;
+        color: #111111;
+        font-size: 15px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background-color 160ms ease;
+      }
+
+      .primary-cta:hover {
+        background: #00b7b4;
+      }
+
+      .primary-cta svg {
+        flex: 0 0 18px;
+        width: 17px;
+        height: 17px;
+      }
+
+      @media (min-width: 1024px) and (max-width: 1279px) {
+        .founder-inner {
+          padding: 0 56px;
+        }
+      }
+
+      @media (max-width: 1023px) {
+        .founder-section {
+          padding: 80px 0;
+        }
+
+        .founder-inner {
+          grid-template-columns: 1fr;
+          gap: 40px;
+          padding: 0 24px;
+        }
+
+        .portrait {
+          width: 100%;
+        }
+
+        .portrait img {
+          aspect-ratio: 4 / 3;
+        }
+
+        h2 {
+          font-size: 36px;
+          line-height: 1.25;
+        }
+
+        .description {
+          max-width: 560px;
+        }
+      }
+
+      @media (max-width: 639px) {
+        .founder-section {
+          padding: 64px 0;
+        }
+
+        .founder-inner {
+          gap: 32px;
+        }
+
+        h2 {
+          font-size: 30px;
+        }
+
+        .primary-cta {
+          width: 100%;
+          gap: 12px;
+          padding-inline: 16px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .primary-cta {
+          transition: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section class="founder-section" aria-labelledby="founder-heading">
+        <div class="founder-inner">
+          <figure class="portrait">
+            <img
+              src="https://placehold.co/800x800/e6f3f3/005561"
+              width="800"
+              height="800"
+              alt="Founder portrait placeholder"
+            />
+
+          </figure>
+
+          <div class="founder-content">
+            <p class="eyebrow">Meet our founder</p>
+            <h2 id="founder-heading">Every student deserves to feel capable.</h2>
+            <p class="description">
+              At BT Education, we begin by understanding the student—not just their marks. Our role is to give them a clear path, the right support and the confidence to keep moving forward.
+            </p>
+
+            <p class="founder-identity">
+              <strong>Founder name</strong>
+              <span>Founder &amp; Academic Director</span>
+            </p>
+
+            <a class="primary-cta" href="https://bt-education-website.vercel.app/enrolment">
+              Book a free academic assessment
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

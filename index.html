@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BT Education — New section concepts</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        background: #ffffff;
+      }
+
+      iframe {
+        display: block;
+        width: 100%;
+        min-height: 720px;
+        border: 0;
+        background: #ffffff;
+      }
+
+      iframe[data-section="course"] {
+        min-height: 1800px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <iframe
+        src="founder-conversion-section.html"
+        title="Founder story section"
+        data-section="founder"
+      ></iframe>
+      <iframe
+        src="teaching-conversion-section.html"
+        title="Teaching in action section"
+        data-section="teaching"
+      ></iframe>
+      <iframe
+        src="classroom-showcase-sections.html"
+        title="Founder teaching banner and classroom gallery sections"
+        data-section="classroom-showcase"
+      ></iframe>
+      <iframe
+        src="tabbed-course-section.html"
+        title="Interactive course explorer section"
+        data-section="course"
+      ></iframe>
+    </main>
+
+    <script>
+      document.querySelectorAll("iframe").forEach(frame => {
+        frame.addEventListener("load", () => {
+          const contentDocument = frame.contentDocument;
+          if (!contentDocument) return;
+
+          const resize = () => {
+            const height = Math.max(
+              contentDocument.documentElement.scrollHeight,
+              contentDocument.body.scrollHeight
+            );
+            frame.style.height = `${height}px`;
+          };
+
+          resize();
+          if ("ResizeObserver" in window) {
+            new ResizeObserver(resize).observe(contentDocument.body);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

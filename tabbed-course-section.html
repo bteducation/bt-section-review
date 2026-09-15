@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BT Education — Explore your course</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --brand: #005561;
+      --dark: #004143;
+      --aqua: #33e3ce;
+      --pale: #e6f3f3;
+      --ink: #111;
+      --muted: #656565;
+      --border: #e2e2e2;
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body { margin: 0; color: var(--ink); background: #fbfbfb; font-family: Inter, Arial, sans-serif; }
+    button, select, a { font: inherit; }
+    button, select { cursor: pointer; }
+    a { color: var(--brand); }
+    button, a, select { -webkit-tap-highlight-color: transparent; }
+    :focus-visible { outline: 3px solid #0b6efd; outline-offset: 4px; }
+    button { color: inherit; }
+    svg { width: 22px; height: 22px; flex-shrink: 0; }
+    h1, h2, h3, h4 { font-family: Poppins, Arial, sans-serif; font-weight: 600; }
+    .course-section { padding: 96px 0; }
+    .container { max-width: 1440px; padding: 0 56px; margin: auto; }
+    .eyebrow { margin: 0; color: var(--brand); font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; line-height: 1.5; }
+    h1 { margin: 16px 0 0; font-size: 46px; line-height: 1.1; letter-spacing: -.02em; }
+    .intro { max-width: 640px; margin: 20px 0 40px; color: var(--muted); font-size: 16px; line-height: 1.75; }
+    .course-tabs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .course-tab { position: relative; display: flex; align-items: center; gap: 18px; min-width: 0; min-height: 112px; padding: 24px 28px; text-align: left; border: 1px solid var(--border); border-radius: 12px 12px 0 0; background: #f2f5f4; transition: background-color .15s; }
+    .course-tab:hover { background: var(--pale); }
+    .course-tab[aria-selected="true"] { background: #fff; border-color: var(--border); border-bottom-color: #fff; }
+    .course-tab[aria-selected="true"]::before { content: ""; position: absolute; top: -1px; left: -1px; right: -1px; height: 4px; border-radius: 12px 12px 0 0; background: var(--brand); }
+    .course-tab[aria-selected="true"]::after { content: ""; position: absolute; bottom: -2px; left: 0; right: 0; height: 3px; background: #fff; z-index: 1; }
+    .tab-copy { min-width: 0; }
+    .tab-copy strong { display: block; font-family: Poppins, sans-serif; font-size: 21px; font-weight: 600; color: var(--brand); }
+    .tab-copy small { display: block; margin-top: 5px; font-size: 13px; line-height: 1.5; color: var(--muted); }
+    .icon { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; flex-shrink: 0; border-radius: 8px; background: var(--pale); color: var(--brand); }
+    .course-tab[aria-selected="true"] .icon { background: var(--brand); color: var(--aqua); }
+    .course-panel { border: 1px solid var(--border); border-radius: 0 0 12px 12px; padding: 40px; background: #fff; }
+    .panel-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; padding-bottom: 28px; margin-bottom: 32px; border-bottom: 1px solid var(--border); }
+    .panel-heading h2 { font-size: 24px; letter-spacing: -.02em; margin: 0; }
+    .course-tag { display: inline-block; border: 1px solid #b4dbdc; border-radius: 6px; padding: 6px 10px; color: var(--brand); font-size: 12px; font-weight: 600; }
+    .detail-layout { display: grid; grid-template-columns: 250px minmax(0, 1fr); align-items: start; gap: 44px; }
+    .topic-list { display: grid; gap: 12px; }
+    .topic-tab { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; min-height: 90px; padding: 18px; border: 1px solid var(--border); border-radius: 8px; background: #fbfbfb; text-align: left; }
+    .topic-tab small { display: block; margin-bottom: 6px; color: var(--muted); font-size: 12px; }
+    .topic-tab strong { display: block; color: var(--brand); font-size: 14px; font-weight: 600; line-height: 1.5; }
+    .topic-tab svg { width: 16px; height: 16px; color: var(--brand); }
+    .topic-tab:hover { background: var(--pale); }
+    .topic-tab[aria-selected="true"], .topic-tab[aria-pressed="true"], .topic-tab.is-active { border-color: var(--brand); background: var(--pale); box-shadow: inset 3px 0 0 var(--brand); }
+    .topic-panel { min-width: 0; }
+    .topic-panel h3 { margin: 10px 0 20px; font-size: 30px; line-height: 1.25; letter-spacing: -.02em; }
+    .rich-content { color: var(--muted); font-size: 15px; line-height: 1.8; }
+    .rich-content p { margin: 0 0 18px; }
+    .rich-content strong { color: var(--ink); font-weight: 600; }
+    .rich-content h4 { margin: 26px 0 12px; font-size: 18px; line-height: 1.4; color: var(--ink); }
+    .rich-content ul, .rich-content ol { padding-left: 22px; margin: 14px 0 20px; }
+    .rich-content li + li { margin-top: 8px; }
+    .rich-content a { text-underline-offset: 3px; }
+    .callout { border-left: 3px solid var(--brand); border-radius: 0 8px 8px 0; background: var(--pale); padding: 18px 20px; margin: 24px 0; color: var(--dark); }
+    .rich-content figure { margin: 24px 0 0; }
+    .rich-content img { display: block; width: 100%; height: auto; border-radius: 8px; aspect-ratio: 2 / 1; object-fit: cover; }
+    .table-scroll { overflow-x: auto; border: 1px solid var(--border); border-radius: 8px; margin-top: 16px; }
+    table { width: 100%; border-collapse: collapse; min-width: 340px; text-align: left; font-size: 14px; }
+    th, td { padding: 14px 16px; vertical-align: top; border-bottom: 1px solid var(--border); }
+    thead { background: var(--pale); color: var(--brand); }
+    tr:last-child td { border-bottom: 0; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px; padding: 12px 22px; border: 1px solid transparent; border-radius: 8px; font-size: 15px; font-weight: 600; line-height: 1.5; text-decoration: none; text-align: center; transition: background-color .15s; }
+    .button svg { width: 17px; height: 17px; }
+    .button-primary { color: #111; background: var(--aqua); }
+    .button-primary:hover { background: #00b7b4; }
+    .button-secondary { color: var(--brand); border-color: var(--brand); background: transparent; }
+    .button-secondary:hover { background: var(--pale); }
+    .included { margin-top: 56px; padding-top: 40px; border-top: 1px solid var(--border); }
+    .included-header { margin-bottom: 28px; }
+    .included h3 { margin: 10px 0 0; font-size: 26px; letter-spacing: -.02em; }
+    .included-header p:last-child { margin: 12px 0 0; color: var(--muted); font-size: 15px; line-height: 1.75; }
+    /* A 12-column grid supports quarter, third, half, two-thirds and full-width cards. */
+    .included-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 20px; }
+    .included-card { grid-column: span var(--span, 4); min-width: 0; padding: 24px; border: 1px solid var(--border); border-radius: 12px; background: #fbfbfb; }
+    .included-card h4 { margin: 20px 0 10px; font-size: 18px; line-height: 1.4; letter-spacing: -.015em; }
+    .included-card p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.75; }
+    .included-card .icon { background: var(--brand); color: var(--aqua); }
+    .included-card.featured { background: var(--pale); border-color: #b4dbdc; }
+    .included-card.media-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: center; }
+    .included-card.media-card h4 { margin-top: 0; }
+    .included-card img { width: 100%; height: auto; aspect-ratio: 2 / 1; object-fit: cover; border-radius: 8px; }
+    .included-footer { margin-top: 32px; padding: 28px; border-radius: 12px; background: var(--pale); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; }
+    .included-footer h4 { margin: 0; font-size: 18px; color: var(--brand); }
+    .included-footer p { margin: 6px 0 0; color: var(--muted); font-size: 14px; line-height: 1.6; }
+    .included-footer .cta-row { margin: 0; }
+    html.dialog-open, body.dialog-open { overflow: hidden; }
+    .mobile-topic-dialog { position: fixed; inset: max(12px, env(safe-area-inset-top)) auto auto 50%; width: min(720px, calc(100% - 24px)); max-height: calc(100dvh - 24px); margin: 0; padding: 0; overflow: hidden; transform: translateX(-50%); border: 0; border-radius: 16px; color: var(--ink); background: #fff; box-shadow: 0 24px 80px rgb(0 52 58 / 30%); }
+    .mobile-topic-dialog::backdrop { background: rgb(0 31 34 / 68%); backdrop-filter: blur(2px); }
+    .mobile-dialog-shell { position: relative; max-height: calc(100dvh - 24px); overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; padding: 30px 24px calc(28px + env(safe-area-inset-bottom)); }
+    .mobile-dialog-close { position: sticky; z-index: 2; top: 0; float: right; display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; margin: -14px -8px 4px 16px; padding: 0; border: 1px solid #b4dbdc; border-radius: 50%; color: var(--brand); background: #fff; box-shadow: 0 4px 16px rgb(0 65 67 / 12%); font-size: 26px; line-height: 1; }
+    .mobile-dialog-close:hover { background: var(--pale); }
+    .mobile-dialog-content .topic-panel { display: block; }
+    .mobile-dialog-content .topic-panel h3 { padding-right: 48px; }
+    noscript { display: block; padding: 24px; }
+    @media (min-width: 1280px) { .container { padding-inline: 112px; } }
+    @media (max-width: 1199px) {
+      .course-panel { padding: 28px; }
+      .detail-layout { grid-template-columns: 215px minmax(0, 1fr); gap: 28px; }
+      .included-grid { gap: 16px; }
+      .included-card { padding: 20px; }
+      .included-card[style*="--span: 3"] { grid-column: span 6; }
+    }
+    @media (max-width: 1023px) {
+      .course-section { padding-block: 80px; }
+      .container { padding-inline: 24px; }
+      h1 { font-size: 36px; }
+      .detail-layout { grid-template-columns: 1fr; gap: 24px; }
+      .topic-list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .topic-tab { min-height: 78px; padding: 14px 16px; background: #fff; }
+      .topic-tab small { margin-bottom: 4px; }
+      .topic-tab.is-active { box-shadow: inset 0 3px 0 var(--brand); }
+      .topic-content { display: none; }
+      .included-card { grid-column: span 6; }
+      .included-card[style*="--span: 12"] { grid-column: 1 / -1; }
+      .included-footer { padding: 24px; }
+    }
+    @media (max-width: 639px) {
+      .course-section { padding-block: 56px; }
+      .container { padding-inline: 16px; }
+      h1 { font-size: 30px; line-height: 1.2; }
+      .intro { margin-bottom: 28px; }
+      .course-tabs { gap: 8px; }
+      .course-tab { min-height: 98px; padding: 16px 12px; gap: 10px; align-items: flex-start; }
+      .course-tab .icon { display: none; }
+      .tab-copy strong { font-size: 16px; }
+      .tab-copy small { font-size: 12px; }
+      .course-panel { padding: 24px 16px; }
+      .panel-heading { margin-bottom: 24px; padding-bottom: 20px; }
+      .panel-heading h2 { font-size: 20px; }
+      .topic-list { grid-template-columns: 1fr; }
+      .topic-panel h3 { font-size: 25px; }
+      .rich-content { font-size: 16px; }
+      .cta-row { flex-direction: column; width: 100%; }
+      .button { width: 100%; }
+      .included { margin-top: 40px; padding-top: 32px; }
+      .included h3 { font-size: 23px; }
+      .included-grid { grid-template-columns: minmax(0, 1fr); }
+      .included-card, .included-card[style*="--span"] { grid-column: 1; }
+      .included-card.media-card { grid-template-columns: 1fr; }
+      .included-footer { padding: 20px; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="course-section" aria-labelledby="course-heading">
+      <div class="container">
+        <p class="eyebrow">Your learning, your way</p>
+        <h1 id="course-heading">Find your way forward.</h1>
+        <p class="intro">Explore how each course works, who it suits and the support that comes with it.</p>
+        <div id="course-tabs" class="course-tabs" role="tablist" aria-label="Course delivery" aria-orientation="horizontal"></div>
+        <div id="course-panels"></div>
+        <noscript>Please enable JavaScript to explore the course tabs.</noscript>
+      </div>
+    </section>
+  </main>
+  <dialog class="mobile-topic-dialog" id="mobile-topic-dialog" aria-label="Course topic details">
+    <div class="mobile-dialog-shell">
+      <button class="mobile-dialog-close" type="button" aria-label="Close course topic">&times;</button>
+      <div class="mobile-dialog-content"></div>
+    </div>
+  </dialog>
+  <script>
+    // Demonstration content. All data is local; no enquiry or enrolment is submitted here.
+    // Card spans: 3 = quarter, 4 = third, 6 = half, 8 = two-thirds, 12 = full width.
+    const icons = {
+      campus: '<path d="M3 21h18M5 21V9l7-6 7 6v12M9 21v-6h6v6M9 10h.01M15 10h.01"/>',
+      screen: '<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8m-4-4v4"/>',
+      book: '<path d="M12 5c-3-2-6-2-9-1v15c3-1 6-1 9 1 3-2 6-2 9-1V4c-3-1-6-1-9 1Zm0 0v15"/>',
+      people: '<circle cx="9" cy="7" r="3"/><path d="M3 21v-3a6 6 0 0 1 12 0v3M16 4a3 3 0 0 1 0 6m2 5a5 5 0 0 1 3 4v2"/>',
+      message: '<path d="M21 11a8 8 0 0 1-8 8H7l-4 3V5a2 2 0 0 1 2-2h8a8 8 0 0 1 8 8Z"/><path d="M7 8h9M7 12h6"/>',
+      plan: '<rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4m8-4v4M4 11h16m-12 5 2 2 5-4"/>',
+      target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+      play: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="m10 8 6 4-6 4Z"/>',
+      arrow: '<path d="M5 12h14m-6-6 6 6-6 6"/>',
+      chevron: '<path d="m9 5 7 7-7 7"/>'
+    };
+    const icon = (name) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${icons[name] || icons.book}</svg>`;
+    const ctas = () => `<div class="cta-row"><a class="button button-primary" href="https://bt-education-website.vercel.app/enrolment">Enrol now ${icon('arrow')}</a><a class="button button-secondary" href="https://bt-education-website.vercel.app/contact-us">Discuss a free trial</a></div>`;
+    const courses = [
+      {
+        id: 'campus', label: 'On-campus', subtitle: 'Learn together. Build momentum.', icon: 'campus',
+        title: 'VCE Mathematical Methods', tag: 'On-campus · Term course', included: 'What’s included: term course',
+        includedIntro: 'Teaching, practice and support that work together throughout the term.',
+        topics: [
+          { id: 'overview', category: 'Overview', label: 'Your term course', title: 'A clear plan for every term.', body: `
+            <p>Build your understanding of <strong>VCE Mathematical Methods</strong> with structured teaching, purposeful practice and feedback you can use.</p>
+            <p>Each lesson connects new ideas to what you already know, then gives you time to work through questions with a tutor nearby.</p>
+            <h4>From understanding to application</h4>
+            <ul><li>Explore key concepts through clear explanations and worked examples.</li><li>Practise choosing and applying the right method.</li><li>Use feedback to identify what to work on next.</li></ul>
+            <div class="callout"><strong>A purposeful weekly routine.</strong><br />Learn a concept, put it into practice, then return to the questions that need more attention.</div>` },
+          { id: 'audience', category: 'Who it’s for', label: 'Find your starting point', title: 'Support that starts where you are.', body: `
+            <p>You do not need to have everything figured out before asking for support. This course is designed around the topics and skills students encounter in Mathematical Methods.</p>
+            <h4>You may be looking to:</h4>
+            <ul><li><strong>Strengthen foundations</strong> before moving into more complex topics.</li><li><strong>Build consistency</strong> with regular practice and a manageable study routine.</li><li><strong>Extend your thinking</strong> by working through unfamiliar questions.</li></ul>
+            <p>Share your year level, current topics and goals with our team so we can help you choose an appropriate class.</p>
+            <div class="callout">Not sure which program fits? <a href="https://bt-education-website.vercel.app/contact-us">Speak with the BT team</a> about your next step.</div>` },
+          { id: 'lessons', category: 'The experience', label: 'Inside a lesson', title: 'See how learning comes together.', body: `
+            <p>A lesson balances explanation, guided practice and opportunities to ask questions. The focus is on understanding the process as well as reaching an answer.</p>
+            <ol><li><strong>Connect:</strong> revisit the ideas the next topic builds on.</li><li><strong>Explore:</strong> unpack the concept with worked examples.</li><li><strong>Apply:</strong> try questions and discuss different approaches.</li><li><strong>Reflect:</strong> identify the next useful step in your practice.</li></ol>
+            <figure><img src="https://placehold.co/1000x500/e6f3f3/005561" width="1000" height="500" alt="Placeholder for a BT classroom lesson" /></figure>` },
+          { id: 'planning', category: 'Next steps', label: 'Plan your term', title: 'Make the next step a clear one.', body: `
+            <p>Speak with our team about a class that fits your learning needs and schedule. Confirm current availability before enrolling.</p>
+            <h4>What to discuss with our team</h4>
+            <div class="table-scroll" role="region" aria-label="Course planning checklist" tabindex="0"><table><thead><tr><th scope="col">Your starting point</th><th scope="col">How it helps</th></tr></thead><tbody><tr><td>Year level and units</td><td>Find the appropriate course content.</td></tr><tr><td>Current school topics</td><td>Discuss alignment with your school program.</td></tr><tr><td>Preferred campus and times</td><td>Check current class availability.</td></tr><tr><td>Learning goals</td><td>Identify the support you are looking for.</td></tr></tbody></table></div>` }
+        ],
+        cards: [
+          { span: 4, icon: 'people', title: 'Clear, focused teaching', body: 'Work through concepts with tutors who explain the reasoning behind each step.' },
+          { span: 4, icon: 'book', title: 'Purposeful resources', body: 'Use worked examples and practice questions to connect lesson content with independent study.' },
+          { span: 4, icon: 'message', title: 'Actionable feedback', body: 'Understand what is working and where to focus your attention next.' },
+          { span: 3, icon: 'campus', title: 'A place to learn', body: 'A classroom setting that supports questions, discussion and focused practice.' },
+          { span: 3, icon: 'target', title: 'Guided practice', body: 'Build confidence applying concepts to a range of questions.' },
+          { span: 3, icon: 'plan', title: 'Weekly structure', body: 'Connect each lesson to a consistent study routine.' },
+          { span: 3, icon: 'people', title: 'Learning together', body: 'Explore ideas and different approaches alongside other students.' }
+        ]
+      },
+      {
+        id: 'online', label: 'Online', subtitle: 'Stay connected, wherever you learn.', icon: 'screen',
+        title: 'VCE Mathematical Methods', tag: 'Online · Connected learning', included: 'What’s included: online learning',
+        includedIntro: 'A connected learning experience with clear teaching and practical resources.',
+        topics: [
+          { id: 'overview', category: 'Overview', label: 'Your online course', title: 'A clear direction, wherever you study.', body: `
+            <p>Explore a connected approach to <strong>VCE Mathematical Methods</strong>, bringing structured teaching and purposeful practice into your study space.</p>
+            <p>Follow the concepts, work through examples and use questions to deepen your understanding. Discuss the available online format with our team to find the right fit.</p>
+            <h4>Keep your learning connected</h4>
+            <ul><li>Connect explanations with worked examples and practice.</li><li>Bring questions from your independent study.</li><li>Use feedback to plan your next steps.</li></ul>
+            <div class="callout"><strong>The same focus on progress.</strong><br />Clear priorities and a regular routine help turn study time into purposeful practice.</div>` },
+          { id: 'audience', category: 'Who it’s for', label: 'Is online right for you?', title: 'Choose a setting that helps you focus.', body: `
+            <p>Online learning may suit students who prefer studying from home or find it difficult to travel to a campus.</p>
+            <h4>Consider your learning habits</h4>
+            <ul><li>Can you set aside a quiet space for your lessons?</li><li>Are you comfortable sharing questions through a digital platform?</li><li>Can you protect regular time for independent practice?</li></ul>
+            <p>Our team can discuss the available options and help you compare online and on-campus learning.</p>` },
+          { id: 'experience', category: 'The experience', label: 'How online works', title: 'Make your study space a learning space.', body: `
+            <p>Prepare your materials, follow the explanations and keep your questions close. A consistent setup makes it easier to focus on the lesson.</p>
+            <h4>A simple routine</h4><ol><li><strong>Prepare:</strong> have your notes and practice questions ready.</li><li><strong>Participate:</strong> follow the examples and note what needs clarification.</li><li><strong>Practise:</strong> revisit the ideas through independent questions.</li></ol>
+            <figure><img src="https://placehold.co/1000x500/d9eceb/005561" width="1000" height="500" alt="Placeholder for an online tutoring session" /></figure>` },
+          { id: 'setup', category: 'Getting started', label: 'Your learning setup', title: 'Get ready for your first lesson.', body: `
+            <p>Before you begin, confirm the platform, class format and timetable with the BT team.</p>
+            <h4>Your setup checklist</h4><ul><li>A laptop or desktop computer and reliable internet connection.</li><li>A quiet workspace with room for notes and calculations.</li><li>Your course materials, calculator and current questions.</li><li>Any account or access details supplied before the lesson.</li></ul>
+            <div class="callout">Need help getting started? Contact our team to discuss course access and the equipment required for your selected format.</div>` }
+        ],
+        cards: [
+          { span: 8, icon: 'screen', featured: true, title: 'A connected learning experience', body: 'Bring explanations, worked examples and practice together in your own study space. Follow a clear direction while building the confidence to work independently.' },
+          { span: 4, icon: 'book', title: 'Study resources', body: 'Keep useful examples and practice materials close as you work through each topic.' },
+          { span: 6, icon: 'message', title: 'Questions with a purpose', body: 'Bring the questions that matter to you and identify the concepts that need another look.' },
+          { span: 6, icon: 'plan', title: 'A consistent routine', body: 'Connect your lessons with regular independent practice and reflection.' },
+          { span: 12, image: 'https://placehold.co/800x400/e6f3f3/005561', title: 'Keep your next step in view', body: 'Use a dedicated space, clear study priorities and the right resources to build a learning routine that works for you.' }
+        ]
+      }
+    ];
+
+    function renderCourse(course) {
+      return `<section class="course-panel" id="panel-${course.id}" role="tabpanel" aria-labelledby="tab-${course.id}" tabindex="0" ${course.id === 'campus' ? '' : 'hidden'}>
+        <header class="panel-heading"><h2>${course.title}</h2><span class="course-tag">${course.tag}</span></header>
+        <div class="detail-layout">
+          <div class="topic-list" role="tablist" aria-label="${course.label} course topics" aria-orientation="vertical">
+            ${course.topics.map((topic, i) => `<button class="topic-tab${i === 0 ? ' is-active' : ''}" type="button" role="tab" id="topic-${course.id}-${topic.id}" aria-controls="content-${course.id}-${topic.id}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}" data-course="${course.id}" data-topic="${topic.id}"><span><small>${topic.category}</small><strong>${topic.label}</strong></span>${icon('chevron')}</button>`).join('')}
+          </div>
+          <div class="topic-content">
+            ${course.topics.map((topic, i) => `<div class="topic-panel" id="content-${course.id}-${topic.id}" role="tabpanel" aria-labelledby="topic-${course.id}-${topic.id}" tabindex="0" ${i === 0 ? '' : 'hidden'}><p class="eyebrow">${topic.category}</p><h3 id="heading-${course.id}-${topic.id}">${topic.title}</h3><div class="rich-content">${topic.body}</div>${ctas()}</div>`).join('')}
+          </div>
+        </div>
+        <section class="included" aria-labelledby="included-${course.id}">
+          <header class="included-header"><p class="eyebrow">The support around your learning</p><h3 id="included-${course.id}">${course.included}</h3><p>${course.includedIntro}</p></header>
+          <div class="included-grid">${course.cards.map(card => `<article class="included-card${card.featured ? ' featured' : ''}${card.image ? ' media-card' : ''}" style="--span: ${card.span}">${card.image ? `<img src="${card.image}" width="800" height="400" loading="lazy" alt="Placeholder for a student's learning workspace" /><div>` : `<span class="icon">${icon(card.icon)}</span>`}<h4>${card.title}</h4><p>${card.body}</p>${card.image ? '</div>' : ''}</article>`).join('')}</div>
+          <footer class="included-footer"><div><h4>Ready to take the next step?</h4><p>Let’s find the right support for your goals.</p></div>${ctas()}</footer>
+        </section>
+      </section>`;
+    }
+
+    document.getElementById('course-tabs').innerHTML = courses.map((course, i) => `<button class="course-tab" type="button" id="tab-${course.id}" role="tab" aria-selected="${i === 0}" aria-controls="panel-${course.id}" tabindex="${i === 0 ? 0 : -1}" data-course="${course.id}"><span class="icon">${icon(course.icon)}</span><span class="tab-copy"><strong>${course.label}</strong><small>${course.subtitle}</small></span></button>`).join('');
+    document.getElementById('course-panels').innerHTML = courses.map(renderCourse).join('');
+
+    const compact = window.matchMedia('(max-width: 1023px)');
+    const topicDialog = document.getElementById('mobile-topic-dialog');
+    const topicDialogContent = topicDialog.querySelector('.mobile-dialog-content');
+    const topicDialogClose = topicDialog.querySelector('.mobile-dialog-close');
+    const topicDialogShell = topicDialog.querySelector('.mobile-dialog-shell');
+    let lastMobileTopicTrigger = null;
+    let parentBodyOverflow = '';
+    let parentHtmlOverflow = '';
+
+    function positionEmbeddedDialog() {
+      try {
+        const frame = window.frameElement;
+        if (!frame || window.parent === window) return;
+        const frameRect = frame.getBoundingClientRect();
+        const visualViewport = window.parent.visualViewport;
+        const viewportTop = visualViewport ? visualViewport.offsetTop : 0;
+        const viewportBottom = viewportTop + (visualViewport ? visualViewport.height : window.parent.innerHeight);
+        const outerTop = Math.max(frameRect.top, viewportTop) + 12;
+        const outerBottom = Math.min(frameRect.bottom, viewportBottom) - 12;
+        if (outerBottom <= outerTop) return;
+        const availableHeight = outerBottom - outerTop;
+        topicDialog.style.position = 'fixed';
+        topicDialog.style.top = `${outerTop - frameRect.top}px`;
+        topicDialog.style.right = 'auto';
+        topicDialog.style.bottom = 'auto';
+        topicDialog.style.left = '50%';
+        topicDialog.style.margin = '0';
+        topicDialog.style.transform = 'translateX(-50%)';
+        topicDialog.style.maxHeight = `${availableHeight}px`;
+        topicDialogShell.style.maxHeight = `${availableHeight}px`;
+      } catch (_) {
+        // The standalone mockup needs no parent-page positioning.
+      }
+    }
+
+    function resetTopicDialog() {
+      document.documentElement.classList.remove('dialog-open');
+      document.body.classList.remove('dialog-open');
+      try {
+        if (window.frameElement && window.parent !== window) {
+          window.parent.document.body.style.overflow = parentBodyOverflow;
+          window.parent.document.documentElement.style.overflow = parentHtmlOverflow;
+        }
+      } catch (_) {}
+      if (lastMobileTopicTrigger) lastMobileTopicTrigger.focus();
+    }
+
+    function closeTopicDialog() {
+      if (!topicDialog.open) return;
+      if (typeof topicDialog.close === 'function') topicDialog.close();
+      else {
+        topicDialog.removeAttribute('open');
+        resetTopicDialog();
+      }
+    }
+
+    function openTopicDialog(courseId, topicId, trigger) {
+      const source = document.getElementById(`content-${courseId}-${topicId}`);
+      const clone = source.cloneNode(true);
+      clone.hidden = false;
+      clone.removeAttribute('id');
+      clone.removeAttribute('role');
+      clone.removeAttribute('aria-labelledby');
+      clone.removeAttribute('tabindex');
+      clone.querySelectorAll('[id]').forEach(element => element.removeAttribute('id'));
+      topicDialogContent.replaceChildren(clone);
+      const topic = courses.find(course => course.id === courseId).topics.find(item => item.id === topicId);
+      topicDialog.setAttribute('aria-label', `${topic.category}: ${topic.title}`);
+      lastMobileTopicTrigger = trigger;
+      document.documentElement.classList.add('dialog-open');
+      document.body.classList.add('dialog-open');
+      try {
+        if (window.frameElement && window.parent !== window) {
+          parentBodyOverflow = window.parent.document.body.style.overflow;
+          parentHtmlOverflow = window.parent.document.documentElement.style.overflow;
+          window.parent.document.body.style.overflow = 'hidden';
+          window.parent.document.documentElement.style.overflow = 'hidden';
+        }
+      } catch (_) {}
+      if (typeof topicDialog.showModal === 'function') topicDialog.showModal();
+      else topicDialog.setAttribute('open', '');
+      positionEmbeddedDialog();
+      topicDialogClose.focus();
+    }
+
+    function activateCourse(id) {
+      closeTopicDialog();
+      document.querySelectorAll('.course-tab').forEach(tab => {
+        const active = tab.dataset.course === id;
+        tab.setAttribute('aria-selected', String(active));
+        tab.tabIndex = active ? 0 : -1;
+        document.getElementById(tab.getAttribute('aria-controls')).hidden = !active;
+      });
+    }
+
+    function activateTopic(courseId, topicId) {
+      const panel = document.getElementById(`panel-${courseId}`);
+      panel.querySelectorAll('.topic-tab').forEach(tab => {
+        const active = tab.dataset.topic === topicId;
+        tab.classList.toggle('is-active', active);
+        if (compact.matches) {
+          tab.setAttribute('aria-pressed', String(active));
+          tab.tabIndex = 0;
+        } else {
+          tab.setAttribute('aria-selected', String(active));
+          tab.tabIndex = active ? 0 : -1;
+        }
+        document.getElementById(`content-${courseId}-${tab.dataset.topic}`).hidden = !active;
+      });
+    }
+
+    // Arrow keys move focus; Enter/Space activate the focused tab. Each course remembers its topic.
+    document.querySelectorAll('[role="tablist"]').forEach(list => {
+      list.addEventListener('keydown', event => {
+        const vertical = list.getAttribute('aria-orientation') === 'vertical';
+        const previous = vertical ? 'ArrowUp' : 'ArrowLeft';
+        const next = vertical ? 'ArrowDown' : 'ArrowRight';
+        if (![previous, next, 'Home', 'End'].includes(event.key)) return;
+        const tabs = [...list.querySelectorAll('[role="tab"]')];
+        const index = tabs.indexOf(document.activeElement);
+        if (index < 0) return;
+        event.preventDefault();
+        const target = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : (index + (event.key === next ? 1 : -1) + tabs.length) % tabs.length;
+        tabs.forEach((tab, i) => { tab.tabIndex = i === target ? 0 : -1; });
+        tabs[target].focus();
+      });
+      list.addEventListener('focusout', event => {
+        if (!list.contains(event.relatedTarget)) list.querySelectorAll('[role="tab"]').forEach(tab => { tab.tabIndex = tab.getAttribute('aria-selected') === 'true' ? 0 : -1; });
+      });
+    });
+    document.querySelectorAll('.course-tab').forEach(tab => tab.addEventListener('click', () => activateCourse(tab.dataset.course)));
+    document.querySelectorAll('.topic-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        activateTopic(tab.dataset.course, tab.dataset.topic);
+        if (compact.matches) openTopicDialog(tab.dataset.course, tab.dataset.topic, tab);
+      });
+    });
+    topicDialogClose.addEventListener('click', closeTopicDialog);
+    topicDialog.addEventListener('click', event => {
+      if (event.target === topicDialog) closeTopicDialog();
+    });
+    topicDialog.addEventListener('close', resetTopicDialog);
+    window.addEventListener('resize', positionEmbeddedDialog);
+    try {
+      if (window.frameElement && window.parent !== window) {
+        window.parent.addEventListener('resize', positionEmbeddedDialog);
+        if (window.parent.visualViewport) {
+          window.parent.visualViewport.addEventListener('resize', positionEmbeddedDialog);
+          window.parent.visualViewport.addEventListener('scroll', positionEmbeddedDialog);
+        }
+      }
+    } catch (_) {}
+
+    // Mobile topic cards open rich content in a modal; desktop cards control inline tab panels.
+    function syncTopicSemantics() {
+      if (!compact.matches) closeTopicDialog();
+      document.querySelectorAll('.topic-list').forEach(list => {
+        if (compact.matches) {
+          list.setAttribute('role', 'group');
+          list.removeAttribute('aria-orientation');
+        } else {
+          list.setAttribute('role', 'tablist');
+          list.setAttribute('aria-orientation', 'vertical');
+        }
+      });
+      document.querySelectorAll('.topic-tab').forEach(tab => {
+        const active = tab.classList.contains('is-active');
+        if (compact.matches) {
+          tab.removeAttribute('role');
+          tab.removeAttribute('aria-selected');
+          tab.setAttribute('aria-pressed', String(active));
+          tab.setAttribute('aria-haspopup', 'dialog');
+          tab.setAttribute('aria-controls', 'mobile-topic-dialog');
+          tab.tabIndex = 0;
+        } else {
+          tab.setAttribute('role', 'tab');
+          tab.removeAttribute('aria-pressed');
+          tab.removeAttribute('aria-haspopup');
+          tab.setAttribute('aria-selected', String(active));
+          tab.setAttribute('aria-controls', `content-${tab.dataset.course}-${tab.dataset.topic}`);
+          tab.tabIndex = active ? 0 : -1;
+        }
+      });
+      document.querySelectorAll('.topic-content .topic-panel').forEach(panel => {
+        const suffix = panel.id.replace('content-', '');
+        panel.setAttribute('role', compact.matches ? 'region' : 'tabpanel');
+        panel.setAttribute('aria-labelledby', `${compact.matches ? 'heading' : 'topic'}-${suffix}`);
+      });
+    }
+    compact.addEventListener('change', syncTopicSemantics);
+    syncTopicSemantics();
+  </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+const search=document.querySelector('#search');
+const results=document.querySelector('#search-results');
+const status=document.querySelector('#search-status');
+const chapters=[...document.querySelectorAll('.chapter')].map(el=>({el,id:el.id,title:el.querySelector('h2').textContent,text:el.textContent.replace(/\s+/g,' ').trim()}));
+document.querySelector('#search-panel').hidden=false;
+const print=document.querySelector('#print');print.hidden=false;print.addEventListener('click',()=>window.print());
+function find(){const q=search.value.trim().toLowerCase();results.replaceChildren();status.textContent='';if(!q)return;const matches=chapters.filter(c=>c.text.toLowerCase().includes(q));status.textContent=matches.length?`${matches.length} matching chapter${matches.length===1?'':'s'}`:'No matching chapters. Try a different word.';for(const c of matches){const li=document.createElement('li');const a=document.createElement('a');a.href='#'+c.id;a.textContent=c.title;const p=document.createElement('p');const at=c.text.toLowerCase().indexOf(q);const start=Math.max(0,at-55);p.textContent=(start?'…':'')+c.text.slice(start,start+200)+'…';li.append(a,p);results.append(li)}}
+search.addEventListener('input',find);search.addEventListener('keydown',e=>{if(e.key==='Escape'){search.value='';find()}});document.querySelector('#clear').addEventListener('click',()=>{search.value='';find();search.focus()});
+const menu=document.querySelector('#menu-toggle'),nav=document.querySelector('#contents'),mobile=matchMedia('(max-width:680px)');
+function setMenu(open){nav.hidden=!open;menu.setAttribute('aria-expanded',String(open))}function resize(){menu.hidden=!mobile.matches;setMenu(!mobile.matches)}menu.addEventListener('click',()=>setMenu(menu.getAttribute('aria-expanded')!=='true'));mobile.addEventListener('change',resize);resize();nav.addEventListener('click',e=>{if(e.target.closest('a')&&mobile.matches)setMenu(false)});
+if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>{for(const entry of entries){if(!entry.isIntersecting)continue;for(const a of nav.querySelectorAll('a')){if(a.hash==='#'+entry.target.id)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')}}},{rootMargin:'-10% 0px -65% 0px'});chapters.forEach(c=>observer.observe(c.el))}

@@ -1,0 +1,592 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>BT Education · Website user guide</title><link rel="stylesheet" href="styles.css"><script src="guide.js" defer></script></head><body><a class="skip" href="#main">Skip to guide</a><header class="top"><a class="brand" href="#main"><b>BT</b> EDUCATION <span>/ Website handbook</span></a><button id="print" hidden>Print guide ↗</button></header><div class="layout"><aside><button id="menu-toggle" aria-expanded="true" aria-controls="contents" hidden>Contents</button><nav id="contents" aria-label="Guide contents"><p class="nav-group">For editors</p><a href="#chapter-1"><span>01</span>Start here</a><a href="#chapter-2"><span>02</span>Find the right document</a><a href="#chapter-3"><span>03</span>Edit an existing page</a><a href="#chapter-4"><span>04</span>Create a new page</a><a href="#chapter-5"><span>05</span>Create a subject and configure the course finder</a><a href="#chapter-6"><span>06</span>Manage English and Chinese</a><a href="#chapter-7"><span>07</span>Arrange sections and media</a><a href="#chapter-8"><span>08</span>Edit shared settings</a><a href="#chapter-9"><span>09</span>Manage shared subject-page bottom sections</a><a href="#chapter-10"><span>10</span>Publish blog posts</a><a href="#chapter-11"><span>11</span>Preview, publish and verify</a><a href="#chapter-12"><span>12</span>Forms, enquiries and registration</a><a href="#chapter-13"><span>13</span>SEO and safe content changes</a><p class="nav-group">For administrators</p><a href="#chapter-14"><span>14</span>Administrator: technology and ownership</a><a href="#chapter-15"><span>15</span>Administrator: Vercel variables</a><a href="#chapter-16"><span>16</span>Administrator: publishing and maintenance</a><p class="nav-group">Help & reference</p><a href="#chapter-17"><span>17</span>Troubleshooting</a><a href="#chapter-18"><span>18</span>About this guide</a></nav></aside><main id="main"><div class="hero"><p class="eyebrow">YOUR WEBSITE, IN YOUR HANDS</p><h1>Website user guide<span>BT Education</span></h1><p class="lead">A practical handbook for everyday content updates, confident publishing and website administration.</p><p class="edition">Version 1.0 · 13 November 2026 · Prepared by Focusin Studio</p><div class="actions"><a class="primary" href="https://bt-education-cms.sanity.studio/">Open Sanity CMS ↗</a><a href="#chapter-3">Edit a page →</a><a href="#chapter-4">Create a page →</a></div></div><div id="search-panel" hidden><label for="search">Find an answer in this guide</label><div class="search-row"><input id="search" type="search" placeholder="Try “course finder”, “email” or “Vercel”" autocomplete="off"><button id="clear">Clear</button></div><p id="search-status" role="status"></p><ul id="search-results"></ul></div><article><section class="chapter" id="chapter-1" aria-labelledby="chapter-1-title"><h2 id="chapter-1-title">Start here</h2><p>This guide explains how to maintain the rebuilt BT Education website: edit content, create pages, manage English and Chinese versions, and understand the settings that keep the site running.</p>
+<p><strong>For everyday editing, use Sanity.</strong> You do not need GitHub, Vercel or a developer to change content within the existing page sections. New layouts, form behaviour, URL redirects and service configuration belong with the website administrator.</p>
+<h3>Your website tools</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Reference table"><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>What you use it for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://bt-education-cms.sanity.studio/">BT Education CMS</a></td>
+<td>Sign in to Sanity to edit and publish website content. Use your invited account.</td>
+</tr>
+<tr>
+<td><a href="https://bt-education-website.vercel.app/">Rebuild review website</a></td>
+<td>Check the rebuilt website, including the English and Chinese pages.</td>
+</tr>
+<tr>
+<td><a href="https://bteducation.github.io/bt-section-review/">Section review site</a></td>
+<td>View the earlier section concepts. These are design mockups, not the live CMS.</td>
+</tr>
+<tr>
+<td><a href="https://vercel.com/dashboard">Vercel dashboard</a></td>
+<td>Administrator access for deployments, domains and environment variables.</td>
+</tr>
+<tr>
+<td><a href="https://www.sanity.io/manage">Sanity project management</a></td>
+<td>Administrator access for members, datasets, API access and webhooks.</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Which website should I check?</strong> The project’s 11 November 2026 release record identifies the Vercel address above as the rebuilt website and says that <code>bteducation.com.au</code> still served WordPress at that time. Confirm the current launch status with Focusin Studio before treating the custom domain as the rebuild. This guide does not confirm a domain cutover.</p>
+<h3>A normal update</h3>
+<ol>
+<li>Open the correct document and language in Sanity.</li>
+<li>Edit the content and wait for the draft to finish saving.</li>
+<li>Review the page in draft preview when needed.</li>
+<li>Resolve validation errors and obtain any required content approval.</li>
+<li>Click <strong>Publish</strong>, then check the public page and its links.</li>
+</ol>
+<p>Saving a draft, marking content as approved, publishing content and deploying website code are four different actions.</p>
+</section>
+<section class="chapter" id="chapter-2" aria-labelledby="chapter-2-title"><h2 id="chapter-2-title">Find the right document</h2><p>The Studio is titled <strong>BT Education CMS</strong>. Its navigation starts with shared settings, followed by page collections. The same subject document can appear in both a category collection and the general <strong>Subject Page</strong> list; these are views of the same content.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Reference table"><table>
+<thead>
+<tr>
+<th>Studio area</th>
+<th>What it controls</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Home Page</strong></td>
+<td>Homepage content and section order. Edit the existing English or Chinese document.</td>
+</tr>
+<tr>
+<td><strong>Standard Page</strong></td>
+<td>General pages such as About, Results, Pricing, Contact and campaign pages.</td>
+</tr>
+<tr>
+<td><strong>Subject Page</strong></td>
+<td>Subject and program content, nested subject URLs and course-finder availability.</td>
+</tr>
+<tr>
+<td><strong>Primary School Pages</strong>, <strong>Secondary School Pages</strong>, <strong>VCE Subject Pages</strong>, <strong>IB Pages</strong>, <strong>UCAT Pages</strong></td>
+<td>Filtered subject lists based on the URL handle.</td>
+</tr>
+<tr>
+<td><strong>Campus Page</strong></td>
+<td>Individual campus pages and their sections.</td>
+</tr>
+<tr>
+<td><strong>Blog Post</strong></td>
+<td>An individual article.</td>
+</tr>
+<tr>
+<td><strong>Blog Index</strong></td>
+<td>Blog landing-page wording, featured article, pagination and final CTA.</td>
+</tr>
+<tr>
+<td><strong>Site Settings</strong>, <strong>Header Settings</strong>, <strong>Footer Settings</strong></td>
+<td>Shared content used across the website.</td>
+</tr>
+<tr>
+<td><strong>Welcome Quiz Settings</strong></td>
+<td>Bilingual quiz wording, options and availability.</td>
+</tr>
+<tr>
+<td><strong>Subject page bottom sections</strong></td>
+<td>Shared sections inherited by subject pages in each language.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Check the document’s <strong>Locale</strong> and URL before editing. Search by the title or handle if a page is not in the category you expected. A subject with a short standalone handle may only appear in the general Subject Page list.</p>
+<p>Edit the existing settings documents. Do not create extra copies of Site, Header, Footer or Welcome Quiz Settings. Home Page and Blog Index should also have only the intended document for each language.</p>
+</section>
+<section class="chapter" id="chapter-3" aria-labelledby="chapter-3-title"><h2 id="chapter-3-title">Edit an existing page</h2><ol>
+<li>Open the page collection, then select the correct title and <strong>Locale</strong>.</li>
+<li>Expand <strong>Sections</strong> (or <strong>Homepage sections</strong>) and open the section you want to change.</li>
+<li>Update the visible heading, text, image, button or item. A document’s internal title is not always the heading visitors see; the hero has its own heading field.</li>
+<li>Use the drag handle to reorder a whole section. Reorder cards, FAQ items or table rows inside their own list when that is the intended change.</li>
+<li>Check links, media descriptions and both desktop and mobile presentation.</li>
+<li>Publish the document when ready. Repeat for the other language if the change applies to both.</li>
+</ol>
+<p><strong>Example: update a paragraph.</strong> Open the page → <strong>Sections</strong> → <strong>Rich text</strong> → edit the body → check any links → preview → <strong>Publish</strong>.</p>
+<p><strong>Example: change a button.</strong> Open its section → the relevant CTA → edit <strong>Label</strong> and <strong>Path or URL</strong>. Use <strong>Open link</strong> for a normal destination, or <strong>Open welcome quiz</strong> for the quiz. Keep a valid destination even for a quiz button: it is the fallback when the quiz is disabled.</p>
+<p>On Standard and Campus pages, <strong>Content review status</strong> and <strong>Review notes</strong> help track approval. Selecting <strong>Approved</strong> does not publish a page. Other page types may not expose these fields.</p>
+</section>
+<section class="chapter" id="chapter-4" aria-labelledby="chapter-4-title"><h2 id="chapter-4-title">Create a new page</h2><p>Use an existing supported page type. Sanity’s section selector shows which layouts that type supports; new custom sections require development.</p>
+<h3>Create a general information page</h3>
+<ol>
+<li>Open <strong>Standard Page</strong> and choose the new-document action.</li>
+<li>Enter <strong>Title</strong> and select <strong>Locale</strong>.</li>
+<li>Enter a stable <strong>Translation key</strong>, such as <code>holiday-program-overview</code>. Use that same key only for this page’s English/Chinese pair.</li>
+<li>Set <strong>Slug</strong>, for example <code>holiday-program-overview</code>. Review generated slugs rather than accepting them blindly.</li>
+<li>Complete <strong>Content review status</strong>, any review notes, and the SEO fields.</li>
+<li>Add at least one section. A useful starting order is <strong>Hero → Rich text → FAQs → Call to action</strong>; include only sections the page needs.</li>
+<li>Create the other language version if required. Translate its text, media descriptions and SEO fields.</li>
+<li>Ask for draft preview access, check both versions, resolve validation errors and publish when approved.</li>
+<li>Add a menu or page link where visitors should discover it. Publishing does not automatically add a page to the navigation.</li>
+</ol>
+<p>The example handle would produce <code>/holiday-program-overview</code> in English and <code>/zh/holiday-program-overview</code> in Chinese if both versions use that handle. These are examples, not existing pages.</p>
+<h3>URL rules</h3>
+<ul>
+<li>Enter the page path without the domain or a leading/trailing slash. Do not put <code>/en</code> or <code>/zh</code> in the stored slug; the website adds language routing.</li>
+<li>Use lowercase words and hyphens. For subject hierarchies, separate levels with <code>/</code>, such as <code>primary-school-tutoring/year-5/english-tutoring</code>.</li>
+<li>Do not reuse a path already owned by another page in the same language. Avoid system routes such as <code>api</code>, <code>search</code> and <code>blog</code>; ask the developer if unsure.</li>
+<li>Changing a published slug can break bookmarks, menus and search results. Coordinate the replacement links and redirect before changing it.</li>
+<li>When duplicating a page, review its locale, translation key, slug, media, course availability and shared-section exclusions. Do not publish a duplicate with the original identifiers.</li>
+</ul>
+</section>
+<section class="chapter" id="chapter-5" aria-labelledby="chapter-5-title"><h2 id="chapter-5-title">Create a subject and configure the course finder</h2><ol>
+<li>Create a <strong>Subject Page</strong> and enter <strong>Subject name</strong>, <strong>Locale</strong> and a stable <strong>Translation key</strong>.</li>
+<li>Enter the complete <strong>URL handle</strong>, preserving the agreed hierarchy.</li>
+<li>Add SEO content and the required sections. <strong>Source Google Doc</strong> is a reference link only; the website does not automatically import edits from that document.</li>
+<li>For the standard content layout, use a light-teal hero, a white description, light-teal FAQs and white related-page content.</li>
+<li>If the hero supports it, enable <strong>Use global founder portrait</strong>. Edit <strong>Banner tagline heading</strong> and <strong>Banner message</strong> using approved wording. The portrait itself is managed once in Site Settings.</li>
+<li>In the description’s Rich text section, use the split layout when a text-and-media composition is needed. Upload the subject’s image or video into its own media field.</li>
+<li>Decide whether the page belongs in the course finder, then review its inherited bottom sections.</li>
+<li>Create and review the paired language page, publish both when approved, and test the actual finder combinations.</li>
+</ol>
+<h3>Make a subject selectable</h3>
+<p>Open <strong>Show in course finder</strong> and <strong>Course finder availability</strong> on the Subject Page.</p>
+<ul>
+<li>Turn on <strong>Show in course finder</strong>.</li>
+<li>Add a <strong>Course offering</strong> with <strong>Programs</strong>, <strong>Year levels</strong> and <strong>Available locations</strong>.</li>
+<li>Use one row only when every selected combination genuinely shares that availability.</li>
+<li>Add separate rows where availability differs. For example, if one year is offered only at Box Hill and another only at Glen Waverley, combining both years and campuses in one row would advertise extra combinations.</li>
+<li>Update the corresponding English and Chinese documents, then publish them.</li>
+</ul>
+<p>The selected program, year and location must match the same offering row. A published page with no offerings will not appear in the finder. Overview/resource pages can remain published with the finder disabled. The homepage finder’s labels and messages are edited in its section; subject availability comes from the Subject Page documents.</p>
+</section>
+<section class="chapter" id="chapter-6" aria-labelledby="chapter-6-title"><h2 id="chapter-6-title">Manage English and Chinese</h2><p>English pages use unprefixed public routes, such as <code>/pricing</code>. Chinese pages use <code>/zh/pricing</code>.</p>
+<p>Pages and posts use separate language documents. Their <strong>Translation key</strong> connects the pair; the website does not translate content automatically. Keep the same document type and translation key for both languages. Their slugs may differ.</p>
+<ol>
+<li>Find or create the matching document with the other Locale.</li>
+<li>Check that its translation key exactly matches the original.</li>
+<li>Translate headings, paragraphs, buttons, SEO content and image/video descriptions.</li>
+<li>Check the destination of every link in the other language, including inline links.</li>
+<li>Publish each document separately and test the language switch from that specific page.</li>
+</ol>
+<p>Home Page uses the fixed key <code>home</code>; Blog Index uses <code>blog</code>. Do not create additional documents to change these keys.</p>
+<p>Site, Header, Footer and Welcome Quiz Settings contain English and Chinese fields together. Subject page bottom sections has separate <strong>English</strong> and <strong>中文</strong> entries. Update both when the change should apply site-wide.</p>
+</section>
+<section class="chapter" id="chapter-7" aria-labelledby="chapter-7-title"><h2 id="chapter-7-title">Arrange sections and media</h2><h3>Choose an existing section</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Reference table"><table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Typical use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hero / Subject hero</td>
+<td>Page introduction and main call to action.</td>
+</tr>
+<tr>
+<td>Rich text</td>
+<td>Paragraphs, lists, headings and inline links; some pages support a split text/media layout.</td>
+</tr>
+<tr>
+<td>Card grid / Unique selling points</td>
+<td>Related topics, benefits and links.</td>
+</tr>
+<tr>
+<td>FAQs</td>
+<td>Questions and answers. Use the rich-answer field where available for formatted answers and links.</td>
+</tr>
+<tr>
+<td>Statistics / results, Results archive</td>
+<td>Approved achievement figures and year-by-year results.</td>
+</tr>
+<tr>
+<td>Pricing guide</td>
+<td>Fee rows, durations, effective/reviewed date, review notice and footnotes.</td>
+</tr>
+<tr>
+<td>Campus locations / Campus details</td>
+<td>Addresses, opening hours, contact information and location media.</td>
+</tr>
+<tr>
+<td>Call to action / Enquiry form</td>
+<td>Next-step links, quiz entry and website enquiries.</td>
+</tr>
+<tr>
+<td>Home-specific and subject-specific sections</td>
+<td>Existing designed compositions; edit their listed fields and item arrays.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Available sections vary by page type. If a needed section is absent from the selector, ask Focusin Studio to confirm the intended page type or scope a new component.</p>
+<h3>Background and spacing</h3>
+<p>Open <strong>Section appearance</strong>. Background options are <strong>Design default</strong>, <strong>White</strong>, <strong>Soft grey</strong>, <strong>Light teal</strong> and <strong>Brand teal</strong>. Top/bottom spacing offers <strong>Design default</strong>, <strong>None</strong>, <strong>Compact</strong>, <strong>Standard</strong> and <strong>Spacious</strong>.</p>
+<p>Use the existing presets. For normal subject content, alternate Light teal and White so adjacent sections are distinct. Keep default/standard spacing unless the reviewed design calls for a change.</p>
+<h3>Images and video</h3>
+<ul>
+<li>Upload or select the intended image, enter meaningful <strong>Alternative text</strong>, and check its crop on desktop and mobile. Avoid filenames as descriptions.</li>
+<li>Where <strong>Mobile image (optional)</strong> is available, it is used below 768px; otherwise the desktop image is reused.</li>
+<li>For video-capable sections, select <strong>Video</strong>, upload a <strong>Video file</strong> or supply a direct HTTPS MP4/WebM URL. A YouTube/Vimeo watch-page URL is not a direct video file. An uploaded file takes precedence over the URL.</li>
+<li>Add a <strong>Video poster</strong>, <strong>Video description</strong>, and captions/transcript where available. Set <strong>Captions language</strong> to match the file, for example <code>en</code> or <code>zh</code>.</li>
+<li>A <strong>Placeholder label</strong> is useful while approved media is pending. Replace it with approved media before final acceptance.</li>
+<li>Check permissions for student photos, testimonials and results before publishing. Removing an image from one section does not mean its underlying asset is unused elsewhere.</li>
+</ul>
+<p>For buttons and navigation use root-relative site paths such as <code>/contact-us</code>; for external destinations use the full HTTPS address. Test both language versions after editing. Inline text links may need the explicit translated destination.</p>
+</section>
+<section class="chapter" id="chapter-8" aria-labelledby="chapter-8-title"><h2 id="chapter-8-title">Edit shared settings</h2><p>Publish the settings document after editing. A shared change can affect many pages at once.</p>
+<h3>Site Settings</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Reference table"><table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Site Name</strong></td>
+<td>Bilingual site name.</td>
+</tr>
+<tr>
+<td><strong>Default SEO Title / Default SEO Description</strong></td>
+<td>Global defaults when a page does not supply its own SEO wording.</td>
+</tr>
+<tr>
+<td><strong>Subject banner — founder portrait</strong></td>
+<td>One portrait used by subject heroes that enable the global founder image. Update its alternative text too.</td>
+</tr>
+<tr>
+<td><strong>Google Analytics measurement ID</strong></td>
+<td>GA4 ID beginning with <code>G-</code>. In this implementation it is managed in Sanity, not a Vercel variable. A valid ID enables the shared analytics integration.</td>
+</tr>
+<tr>
+<td><strong>Contact Widget</strong></td>
+<td>Show/hide the floating widget, bilingual labels, WeChat ID and QR code, WhatsApp link, and Calendly destination.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Check the QR code with a phone after replacing it. Use a full WhatsApp link with country code. Calendly accepts an HTTPS booking URL or a site path such as <code>/enrolment</code> while a booking URL is unavailable.</p>
+<h3>Header Settings</h3>
+<p>Edit <strong>Phone</strong>, <strong>Announcement Text</strong>, <strong>Mobile Menu Title</strong>, <strong>Navigation Items</strong>, <strong>Desktop Courses Mega Menu</strong>, <strong>Primary CTA</strong> and <strong>Mobile Primary CTA Label</strong>.</p>
+<p>Drag Navigation Items to reorder them. <strong>Submenu Links</strong> produce grouped navigation. Use <strong>Courses mega menu</strong> for the Courses group; use <strong>Dropdown</strong> for other grouped items. Supply both language labels, a real destination and any needed description.</p>
+<p>To add a page to the menu: publish the page first → open Header Settings → add the item or child link → enter both labels and the root-relative path → publish Header Settings → check desktop and mobile menus in both languages.</p>
+<h3>Footer Settings</h3>
+<p>Edit <strong>Summary</strong>, <strong>Contact Email</strong>, <strong>Contact Phone</strong>, <strong>Contact Address</strong>, <strong>Social Links</strong> and <strong>Link Groups</strong>. Review other places displaying the same information, such as page sections, the header and contact widget; they are not all one shared field.</p>
+<p><strong>Changing a displayed email address does not change where form submissions are delivered.</strong> The delivery inbox is configured separately in Vercel as <code>CONTACT_TO_EMAIL</code>.</p>
+<h3>Welcome Quiz Settings</h3>
+<p>Use <strong>Enable welcome quiz</strong> to control availability. Edit <strong>Quiz copy</strong>, parent/student year levels, subject labels and audiences, parent goals and student goal groups.</p>
+<p>Stable values connect quiz options and rules. Do not rename or delete a stable value without checking every reference. Changing a visible label is different from changing the underlying value. After editing, test both the parent and student paths in both languages, including conditional subjects and the final submission.</p>
+</section>
+<section class="chapter" id="chapter-9" aria-labelledby="chapter-9-title"><h2 id="chapter-9-title">Manage shared subject-page bottom sections</h2><p>Open <strong>Subject page bottom sections → English</strong> or <strong>中文</strong>. This is independent of the homepage.</p>
+<ol>
+<li>Use <strong>Show global bottom sections</strong> to enable or hide the group for that language.</li>
+<li>In <strong>Sections</strong>, add an entry and give it an <strong>Editor label</strong>. This label is for editors, not visitors.</li>
+<li>Add exactly one <strong>Section content</strong> item: <strong>Teaching banner</strong>, <strong>CTA / quiz promotion</strong>, <strong>Contact details</strong> or <strong>Enquiry form</strong>.</li>
+<li>Use <strong>Show this section</strong> to hide an entry without deleting it. Drag entries to change the order.</li>
+<li>Publish and check representative subject pages in that language.</li>
+</ol>
+<p>These sections appear after local page content and before the footer. Editing one entry updates every subject page that inherits it. Do not copy shared sections into every page.</p>
+<h3>Exceptions for a single page</h3>
+<p>On the Subject Page, open <strong>Global bottom sections</strong>. Switch off <strong>Show global sections</strong> to hide the whole group, or use <strong>Hide selected sections</strong> for individual exclusions. Publish the page.</p>
+<h3>Page-specific versions</h3>
+<p>A shared entry can contain <strong>Page-specific versions</strong>. Add <strong>Page paths</strong> and exactly one <strong>Replacement section</strong>. Paths must be exact and root-relative, for example <code>/mathematical-methods</code>, without <code>/zh</code>, a trailing slash, query string or fragment. The setting already belongs to one language. Avoid duplicate/overlapping paths within the same entry.</p>
+<p>Renaming or reordering an entry preserves existing page exclusions. Deleting and recreating it produces a new entry, so review exclusions again. A missing language setting does not inherit the other language’s shared content.</p>
+</section>
+<section class="chapter" id="chapter-10" aria-labelledby="chapter-10-title"><h2 id="chapter-10-title">Publish blog posts</h2><ol>
+<li>Open <strong>Blog Post</strong> and create a document.</li>
+<li>Enter <strong>Title</strong>, <strong>Locale</strong>, <strong>Translation key</strong> and <strong>Slug</strong>. For a normal article, use a simple slug such as <code>study-planning-tips</code>, without <code>blog/</code> or a language prefix.</li>
+<li>Add <strong>Excerpt</strong> (up to 220 characters), <strong>Category</strong>, <strong>Author</strong>, <strong>Published at</strong>, <strong>Main image</strong>, and the article <strong>Body</strong>.</li>
+<li>Complete SEO fields, review media permissions, and create the matching translation when needed.</li>
+<li>Preview and publish. Test the article at <code>/blog/your-slug</code> or <code>/zh/blog/your-slug</code>.</li>
+</ol>
+<p><strong>Published at controls display/order; it is not a publication scheduler in this website.</strong> A future date does not keep an already-published article hidden. Leave an article as a draft until it should be available.</p>
+<p>To change the blog landing page, open the existing <strong>Blog Index</strong> for the correct language. Edit the headings, introduction, <strong>Posts per page</strong> (3–24), <strong>Featured post</strong>, final CTA and SEO fields. Publish the referenced article before publishing a featured-post selection, and choose the matching language.</p>
+</section>
+<section class="chapter" id="chapter-11" aria-labelledby="chapter-11-title"><h2 id="chapter-11-title">Preview, publish and verify</h2><h3>Draft preview</h3>
+<p>Ask Focusin Studio for a private preview link for the page you are reviewing. The current Studio configuration does not include a custom one-click preview panel. Preview access uses the website’s protected draft endpoint and requires administrator configuration.</p>
+<p>Open the link and confirm the visible preview banner. Check the page, then use <strong>Exit preview</strong> to return to the published version. Do not put secret-bearing preview links in this public guide or forward them widely.</p>
+<p>A Vercel preview deployment is not the same thing as Sanity draft preview: without draft mode, it normally reads published CMS content. Preview and production can also point at the same dataset; publishing to a shared dataset can affect both.</p>
+<h3>Publish</h3>
+<p>Resolve the document’s blocking validation errors, complete the content approval, then click <strong>Publish</strong>. Wait for confirmation and check the normal website outside draft mode. Each language document and each shared settings document is published separately.</p>
+<p>Content-only edits normally do not require a website code deployment. On the production website, the configured Sanity webhook refreshes the content cache. Reload an already-open page. If the webhook is unavailable, a five-minute cache fallback exists, but it is not a guaranteed five-minute update deadline.</p>
+<h3>Before you finish</h3>
+<ul>
+<li>Check the page title, spelling, prices, dates and approved claims.</li>
+<li>Open the page at desktop and mobile widths.</li>
+<li>Test buttons, internal links, menus and the language switch.</li>
+<li>Check pictures, video controls and captions.</li>
+<li>For courses, test real program/year/campus combinations.</li>
+<li>For shared settings, check more than one affected page.</li>
+<li>Confirm the published version outside draft preview.</li>
+</ul>
+<h3>Unpublish or remove content</h3>
+<p>Use the document’s action menu for unpublishing where available. Coordinate removed URLs, links and redirects with Focusin Studio first. Some known pages have bundled fallback content in this implementation, so unpublishing alone is not a reliable way to guarantee that a public route disappears. Verify the actual website response. Do not delete shared assets or referenced documents without checking their usage.</p>
+</section>
+<section class="chapter" id="chapter-12" aria-labelledby="chapter-12-title"><h2 id="chapter-12-title">Forms, enquiries and registration</h2><p>The website’s Contact/Enrolment enquiry forms and Welcome Quiz send through the website backend and Resend. They are separate from the embedded external registration system.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Reference table"><table>
+<thead>
+<tr>
+<th>Change</th>
+<th>Where to make it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Heading or introduction around a form</td>
+<td>The page’s <strong>Enquiry form</strong> section in Sanity.</td>
+</tr>
+<tr>
+<td>Visible contact email or phone</td>
+<td>Relevant page sections and shared Header/Footer Settings.</td>
+</tr>
+<tr>
+<td>Quiz wording and choices</td>
+<td><strong>Welcome Quiz Settings</strong>.</td>
+</tr>
+<tr>
+<td>Inbox receiving website enquiries</td>
+<td>Vercel → <code>CONTACT_TO_EMAIL</code>.</td>
+</tr>
+<tr>
+<td>Email sender</td>
+<td>Vercel → <code>CONTACT_FROM_EMAIL</code>, using a domain verified in Resend.</td>
+</tr>
+<tr>
+<td>Email service credentials</td>
+<td>Vercel → <code>RESEND_API_KEY</code>, managed by the administrator.</td>
+</tr>
+<tr>
+<td>Embedded registration form fields and submissions</td>
+<td>The separate registration system; coordinate with its administrator.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The <strong>Registration form</strong> section exposes its heading and introduction in Sanity. Its embedded destination, <code>registration.bteducation.com.au</code>, is defined in website code; it is not changed by editing the Contact enquiry form.</p>
+<p>After a delivery-setting change, send one agreed test enquiry and confirm it arrived in the intended inbox. A submission success message or provider acceptance is not proof of inbox receipt. Check spam and Resend delivery records if it is missing. Avoid including real student information in routine tests.</p>
+</section>
+<section class="chapter" id="chapter-13" aria-labelledby="chapter-13-title"><h2 id="chapter-13-title">SEO and safe content changes</h2><p>Set <strong>SEO title</strong>, <strong>SEO description</strong> and <strong>Social image</strong> on the page or post. The description field permits at most 180 characters. Use specific, readable descriptions instead of lists of keywords. A social image is separate from the hero image.</p>
+<p>Page content, global SEO defaults and GA4 ID live in Sanity. Canonical site origin, redirect rules, route behaviour, robots and sitemap generation involve website configuration/code. Ask the developer to coordinate domain or published-URL changes.</p>
+<p>Results, testimonials, pricing and student media require approved facts and permissions. Record outstanding items in review notes where available. Publishing a page should not be used as a substitute for resolving a factual uncertainty.</p>
+</section>
+<section class="chapter" id="chapter-14" aria-labelledby="chapter-14-title"><h2 id="chapter-14-title">Administrator: technology and ownership</h2><p>The following reflects the source inspected on <strong>13 November 2026</strong>. Package declarations describe the project, not a guarantee that every hosted environment is on that exact build.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Reference table"><table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Technology</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Website</td>
+<td>Next.js 16.3.1, React 19.2.8, TypeScript</td>
+<td>Pages, language routing, forms, search, SEO and server rendering.</td>
+</tr>
+<tr>
+<td>Styling</td>
+<td>Tailwind CSS 4 and shared components</td>
+<td>Responsive layouts, typography, colours and section presets.</td>
+</tr>
+<tr>
+<td>CMS</td>
+<td>Sanity Studio 6 and Sanity Content Lake</td>
+<td>Documents, media, drafts, publication and editor access.</td>
+</tr>
+<tr>
+<td>Hosting</td>
+<td>Vercel</td>
+<td>Builds, deployments, domains, environment variables and API routes.</td>
+</tr>
+<tr>
+<td>Email delivery</td>
+<td>Resend</td>
+<td>Website enquiry and quiz email transport.</td>
+</tr>
+<tr>
+<td>Source control</td>
+<td>GitHub</td>
+<td>Application source and change history.</td>
+</tr>
+<tr>
+<td>Analytics</td>
+<td>Google Analytics 4, when configured</td>
+<td>Measurement ID is entered in Sanity Site Settings.</td>
+</tr>
+<tr>
+<td>Manual / mockups</td>
+<td>Static HTML, CSS and JavaScript on GitHub Pages</td>
+<td>Documentation and design-review material; independent of the main application.</td>
+</tr>
+<tr>
+<td>Registration</td>
+<td>External registration system</td>
+<td>Embedded enrolment/registration workflow, separately maintained.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Give editors individual Sanity accounts. Project administrators manage member access in Sanity project management; Vercel and GitHub access are separate permissions. Routine editors should not need API tokens. Coordinate account ownership and access changes with the project owner.</p>
+</section>
+<section class="chapter" id="chapter-15" aria-labelledby="chapter-15-title"><h2 id="chapter-15-title">Administrator: Vercel variables</h2><p>Open the website’s Vercel project → <strong>Settings → Environment Variables</strong>. Select the intended environment: <strong>Production</strong>, <strong>Preview</strong> or <strong>Development</strong>. After a change, create a new deployment for that environment; existing deployments do not acquire the new value automatically. See <a href="https://vercel.com/docs/environment-variables/managing-environment-variables">Vercel’s environment-variable guide</a>.</p>
+<p>This is a source-code inventory, not a readout of the values currently stored in Vercel. Actual credentials and inbox addresses must be obtained through the owner’s private handover.</p>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Reference table"><table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Purpose and handling</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NEXT_PUBLIC_SITE_URL</code></td>
+<td>Public canonical website origin used for metadata and SEO URLs. Use the intended HTTPS origin; changing it does not switch DNS.</td>
+</tr>
+<tr>
+<td><code>NEXT_PUBLIC_SANITY_PROJECT_ID</code></td>
+<td>Public Sanity project identifier. Must point to the intended content project.</td>
+</tr>
+<tr>
+<td><code>NEXT_PUBLIC_SANITY_DATASET</code></td>
+<td>Content dataset. The code default is <code>production</code>; verify the actual environment before publishing.</td>
+</tr>
+<tr>
+<td><code>NEXT_PUBLIC_SANITY_API_VERSION</code></td>
+<td>Date-based Sanity API behaviour version. Code default: <code>2026-08-19</code>. This is not the site’s content-update date.</td>
+</tr>
+<tr>
+<td><code>SANITY_API_READ_TOKEN</code></td>
+<td>Private server-side credential for draft preview and any content access that needs authentication. Keep it out of browser/public files.</td>
+</tr>
+<tr>
+<td><code>SANITY_PREVIEW_SECRET</code></td>
+<td>Private value protecting the draft-preview entry route. Share preview access privately.</td>
+</tr>
+<tr>
+<td><code>SANITY_REVALIDATE_SECRET</code></td>
+<td>Private value checked against the webhook’s <code>x-sanity-webhook-secret</code> header. Both sides must agree.</td>
+</tr>
+<tr>
+<td><code>RESEND_API_KEY</code></td>
+<td>Private credential for enquiry/quiz email delivery.</td>
+</tr>
+<tr>
+<td><code>CONTACT_FROM_EMAIL</code></td>
+<td>Sender, optionally with a display name, on a Resend-verified domain.</td>
+</tr>
+<tr>
+<td><code>CONTACT_TO_EMAIL</code></td>
+<td>One receiving address or a comma-separated list. Use agreed test recipients for testing and approved recipients for production.</td>
+</tr>
+<tr>
+<td><code>BT_NOVEMBER_ROUTES_RELEASED</code></td>
+<td>Developer-controlled release gate. The exact value <code>true</code> enables reviewed November route consolidation. Do not change it as an ordinary content edit.</td>
+</tr>
+</tbody>
+</table></div>
+<p><code>SANITY_API_WRITE_TOKEN</code> appears in the environment example and is used by controlled content scripts. It is not required by the inspected public website runtime. Do not add a write token to Vercel merely because it appears in the template; the developer should decide where authorised maintenance scripts run.</p>
+<p><code>BT_NEXT_DIST_DIR</code> changes the local/build output directory and is not a normal client setting. <code>NODE_ENV</code> and <code>VERCEL_ENV</code> are runtime/platform indicators; do not use them as editorial switches. Script-only values such as local preview ports are not ordinary production settings.</p>
+<p>Any name beginning with <code>NEXT_PUBLIC_</code> is intended to be public. Never put a password, API secret or private token in one of those variables.</p>
+<h3>November route gate</h3>
+<p>The gate coordinates <code>/vce-tutoring</code> → <code>/vce-program</code> and <code>/vce-tutoring/maths-methods</code> → <code>/mathematical-methods</code>, including Chinese equivalents. The 11 November release record says it was still disabled then. Only the developer should enable it after checking the reviewed destination documents and deploying the matching code. This guide has not independently verified the current hosted value.</p>
+</section>
+<section class="chapter" id="chapter-16" aria-labelledby="chapter-16-title"><h2 id="chapter-16-title">Administrator: publishing and maintenance</h2><h3>Content refresh webhook</h3>
+<p>The administrator configures the Sanity webhook for the intended dataset and the website’s <code>/api/revalidate</code> endpoint. It uses POST for published-content changes, excluding drafts and release versions, with the custom header <code>x-sanity-webhook-secret</code> matching <code>SANITY_REVALIDATE_SECRET</code> in Vercel.</p>
+<p>The webhook’s separate signing-secret field is not a replacement for that custom header in this implementation. Check delivery logs: a successful request returns HTTP 200; HTTP 401 indicates a missing or mismatched configured secret. Confirm behaviour after changing domains or secrets.</p>
+<h3>Different kinds of releases</h3>
+<div class="table-scroll" tabindex="0" role="region" aria-label="Reference table"><table>
+<thead>
+<tr>
+<th>What changed?</th>
+<th>Required action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Existing page text, images or settings</td>
+<td>Publish the relevant Sanity documents and verify the website.</td>
+</tr>
+<tr>
+<td>New schema fields or editor controls</td>
+<td>Developer updates and deploys Studio; renderer changes may also need a website deployment.</td>
+</tr>
+<tr>
+<td>Website behaviour, layout component or redirects</td>
+<td>Review, test and deploy the application through the configured Vercel workflow.</td>
+</tr>
+<tr>
+<td>Vercel environment variable</td>
+<td>Save for the right environment, redeploy and test the affected feature.</td>
+</tr>
+<tr>
+<td>Manual text</td>
+<td>Update and publish the static guide files to the separate Pages source.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The GitHub repository contains quality checks, but confirm Vercel’s actual production branch and deployment settings in its dashboard before merging or releasing. An existing branch name is not proof of a production deployment target.</p>
+<h3>Restore or correct a mistake</h3>
+<p>For an incorrect edit, restore the approved wording in a new draft, or ask the administrator about document history available to the account; review and publish the correction. For a code incident, the developer can select a suitable Vercel deployment after checking compatibility with current content. A code rollback does not roll back Sanity content or environment configuration.</p>
+<p>Do not rerun old import/seed scripts as an editorial undo. Some maintenance scripts can overwrite reviewed content. Backups, imports, schema changes and dataset operations belong with the administrator.</p>
+</section>
+<section class="chapter" id="chapter-17" aria-labelledby="chapter-17-title"><h2 id="chapter-17-title">Troubleshooting</h2><div class="table-scroll" tabindex="0" role="region" aria-label="Reference table"><table>
+<thead>
+<tr>
+<th>Problem</th>
+<th>First checks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>I cannot sign in or edit</td>
+<td>Confirm your invited Sanity account, project and role with the owner. Do not share someone else’s login.</td>
+</tr>
+<tr>
+<td>The page is missing from a Studio category</td>
+<td>Search the general page-type list. Subject categories are filtered by URL prefix.</td>
+</tr>
+<tr>
+<td>Publish is blocked</td>
+<td>Open the validation messages and resolve the exact fields. Existing imported content can have validation issues; do not invent missing prices/dates to pass validation. Ask Focusin Studio where the intended correction is unclear.</td>
+</tr>
+<tr>
+<td>My change is saved but invisible</td>
+<td>Check document, locale, draft/publication status, website address and preview banner. Reload; then ask the administrator to inspect webhook delivery and content loading.</td>
+</tr>
+<tr>
+<td>An old page still appears after unpublishing</td>
+<td>Some known routes have bundled fallback content. Ask the developer to handle removal and redirects.</td>
+</tr>
+<tr>
+<td>A new page is not in the menu</td>
+<td>Add its destination in Header/Footer Settings or the relevant page card and publish that document too.</td>
+</tr>
+<tr>
+<td>A course is missing from the finder</td>
+<td>Check publication, locale, Show in course finder and a complete matching offering row.</td>
+</tr>
+<tr>
+<td>A language switch does not find the expected page</td>
+<td>Check the paired document’s type, Locale, exact Translation key and publication state.</td>
+</tr>
+<tr>
+<td>A change appeared on many subject pages</td>
+<td>Check shared bottom sections or the global founder portrait; use page exclusions for exceptions.</td>
+</tr>
+<tr>
+<td>A video does not play</td>
+<td>Check the selected media type, uploaded file or direct HTTPS video URL. Watch-page URLs are unsupported in this media field.</td>
+</tr>
+<tr>
+<td>An enquiry did not arrive</td>
+<td>Check the approved receiving inbox and spam, then Resend delivery records and the deployed email configuration.</td>
+</tr>
+<tr>
+<td>A button opens the quiz unexpectedly</td>
+<td>Check its Button action. Choose Open link when it should navigate normally.</td>
+</tr>
+<tr>
+<td>A changed URL shows a 404 or redirects</td>
+<td>Check the stored slug, publication state, language prefix and code-managed redirects/release gates.</td>
+</tr>
+</tbody>
+</table></div>
+<p>When reporting an issue, include the page URL, language, document title, field changed, approximate time, browser/device and expected versus actual result. A screenshot helps; exclude credentials and student enquiry details. Contact Focusin Studio at <a href="mailto:hello@focusin.com.au">hello@focusin.com.au</a>.</p>
+</section>
+<section class="chapter" id="chapter-18" aria-labelledby="chapter-18-title"><h2 id="chapter-18-title">About this guide</h2><p>Prepared by Focusin Studio · <strong>13 November 2026</strong> · Guide version <strong>1.0</strong>.</p>
+<p>Based on the BT Education project’s current local schemas, renderers, environment references and handover/release documents. Authenticated editor actions, current Vercel variable values and domain cutover have not been independently exercised for this guide. Review the actual account/environment before operational changes.</p>
+<p>Further reference: <a href="https://www.sanity.io/docs/studio/connected-content">Sanity connected content</a>, <a href="https://vercel.com/docs/environment-variables/managing-environment-variables">Vercel environment variables</a>, and <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site">GitHub Pages publishing</a>.</p>
+<p>The guide itself is a standalone static website. It can be hosted alongside the existing section-review site under <code>user-guide/</code>. GitHub Pages is publicly accessible in the normal setup; this guide includes variable names and operational explanations, never actual credentials. A private source repository alone does not make its Pages site private.</p>
+</section></article><footer>BT Education · Website handbook · Focusin Studio</footer></main></div></body></html>
